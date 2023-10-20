@@ -18,8 +18,4 @@ localhost:8000
 localhost:8080
 User: root
 Pass: rootpwd
-## FastAPI
-
-```shell
-localhost:8001
 ```
