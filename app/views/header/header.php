@@ -77,7 +77,13 @@
       </header>
     
 
-    <div class="hero" style="background-image: url('/views/header/images/hero_1.jpg');"></div>
+      <div class="hero" style="background-image: url('/views/header/images/hero_1.jpg'); background-size: cover; background-position: center; width: 100%; height: 400px; position: relative;">
+    <div style="background-color: rgba(0, 0, 0, 0.6 ); position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <h1 style="color: #fff; font-size: 36px;">Pasate a la K0munitat del cambio</h1>
+        <p style="color: #fff; font-size: 18px;text-align: justify; margin-left: 20%;margin-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <a href="#" style="background-color: #89ba16; color: #fff; text-decoration: none; padding: 10px 20px; margin-top: 10px; border-radius: 5px;">Botón</a>
+    </div>
+</div>
   
 
 
