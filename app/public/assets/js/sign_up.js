@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $('#alertmail').hide();
     $('#generalAlert').hide();
+    $('#alertmail').hide();
     $('#alertPass').hide();
     $('#alertPass2').hide();
     $('#alertNom').hide();
@@ -24,21 +24,12 @@ $(document).ready(function () {
     });
 });
 
-
+checkbox = $("#checkCondicions")[0];
 function dades() {
     email = $('#email').val();
-    mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     password = $('#password').val();
     password2 = $('#password2').val();
-    patroAlfaNumeric = /^[a-zA-Z0-9\s\-_.,'"/&(){}[\]<>]+$/;
-    patroAlfabetic = /^[A-Za-z]+$/;
-    patroNumeric = /^[0-9]+$/;
     nom = $('#nom').val();
-    cognoms = $('#cognoms').val();
-    adreça = $('#adreça').val();
-    ciutat = $('#ciutat').val();
-    codipostal = $('#codipostal').val();
-    telefon = $('#telefon').val();
 }
 
 function comprovarDades() {
@@ -46,7 +37,7 @@ function comprovarDades() {
     comprovarContrasenya();
     comprovarNom();
     comprovarCheckBox();
-    if (email === '' || password === '' || nom === '' || cognoms === '' || adreça === '' || ciutat === '' || codipostal === '' || telefon === '') {
+    if (email === '' || password === '' || nom === '') {
         $('#generalAlert').text('Completa tots els camps.').show();
     }else {
         $('#generalAlert').hide();
@@ -129,13 +120,13 @@ function comprovarContrasenya() {
 
 function comprovarNom() {
     let nom = $('#nom').val();
-    let patroAlfabetic = /^[A-Za-z]+$/;
+    let patroAlfaNumeric = /^[a-zA-Z0-9\s\-_.,'"/&(){}[\]<>]+$/;
 
     if (nom === '') {
         $('#nom').removeClass('border-success');
         $('#nom').addClass('border-danger');
         $('#alertNom').text('El nom és obligatori.').show();
-    } else if (!nom.match(patroAlfabetic)) {
+    } else if (!nom.match(patroAlfaNumeric)) {
         $('#nom').removeClass('border-success');
         $('#nom').addClass('border-danger');
         $('#alertNom').text('Introdueix un nom en format correcte.').show();

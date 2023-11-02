@@ -24,14 +24,14 @@ class User
                       VALUES (
                         :email, 
                         :pass, 
-                        :firstname
+                        :username
                         )";
 
             $stmt = $this->conn->prepare($query);
 
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':pass', $pass);
-            $stmt->bindParam(':firstname', $nom);
+            $stmt->bindParam(':username', $nom);
 
             $stmt->execute();
         } catch (Exception $e) {

@@ -52,12 +52,11 @@ class UserController
             }
         } catch (Exception $e) {
             // Manejo de la excepción, como registro de errores o redirección a una página de error.
-            echo("Error en el controlador: " . $e->getMessage());
+            echo ("Error en el controlador: " . $e->getMessage());
 
             // Puedes redirigir al usuario a una página de error personalizada aquí.
             // header("Location: error.php");
         }
     }
-    
 }
- require_once '../views/sign_up.php';
+require_once '../views/sign_up.php';
