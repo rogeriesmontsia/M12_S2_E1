@@ -35,7 +35,6 @@ class User
 
             $stmt->execute();
         } catch (Exception $e) {
-            // Manejo de la excepción, como registro de errores o redirección a una página de error.
             echo ("Error en el controlador: " . $e->getMessage());
         }
     }
