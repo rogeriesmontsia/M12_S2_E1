@@ -38,4 +38,13 @@ class Community
             echo ("Error en el controlador: " . $e->getMessage());
         }
     }
+
+    public function getAll()
+    {
+        $query = 'SELECT * FROM ' . $this->table_name . ' WHERE isActive = 1';
+        $this->conn->exec("set names utf8");
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
