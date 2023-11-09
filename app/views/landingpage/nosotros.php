@@ -1,6 +1,6 @@
 <!-- Bloque Sobre nosotros -->
-<section class="site-section bg-light py-3">
-  <div class="container py-5">
+<section class="site-section bg-light py-3" >
+  <div class="container py-5" style="margin-left: 20%; margin-right: 20%;">
     <div class="row mb-5">
       <div class="col-lg-6 mx-auto text-center">
         <h2 class="text-uppercase display-8">Sobre Nosotros</h2>

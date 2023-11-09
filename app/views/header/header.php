@@ -86,8 +86,7 @@
 
 
     <script src="/views/header/js/jquery-3.3.1.min.js"></script>
-    <script src="/views/header/js/popper.min.js"></script>
-    <script src="/views/header/js/bootstrap.min.js"></script>
+  
     <script src="/views/header/js/jquery.sticky.js"></script>
     <script src="/views/header/js/main.js"></script>
   </body>
