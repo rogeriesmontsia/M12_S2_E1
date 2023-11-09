@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 });
 
-checkbox = $("#checkCondicions")[0];
+// checkbox = $("#checkCondicions")[0];
 function dades() {
     email = $('#email').val();
     password = $('#password').val();
@@ -39,8 +39,9 @@ function comprovarDades() {
     comprovarCheckBox();
     if (email === '' || password === '' || nom === '') {
         $('#generalAlert').text('Completa tots els camps.').show();
-    }else {
+    } else if (comprovarMail() && comprovarContrasenya() && comprovarNom() && comprovarCheckBox()) {
         $('#generalAlert').hide();
+        $('#formulario').submit();
         return true;
     }
 }
@@ -88,11 +89,13 @@ function comprovarContrasenya() {
     } else if (password2 !== '' && password !== password2) {
         $('#password2').addClass('border-danger');
         $('#alertPass').text('Les contrasenyes han de coincidir.').show();
-    } else if (password === password2) {
-        $('#alertPass').hide();
-        $('#password, #password2').removeClass('border-danger');
-        $('#password, #password2').addClass('border-success');
-    } else {
+    } 
+    // else if (password === password2) {
+    //     $('#alertPass').hide();
+    //     $('#password, #password2').removeClass('border-danger');
+    //     $('#password, #password2').addClass('border-success');
+    // } 
+    else {
         $('#alertPass').hide();
         $('#password, #password2').removeClass('border-danger');
         $('#password').addClass('border-success');
