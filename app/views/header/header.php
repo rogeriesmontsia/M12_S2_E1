@@ -1,3 +1,12 @@
+<?php session_start();
+
+// Verifica si 'user_name' está definido en la sesión
+    // Muestra un saludo personalizado
+    echo '<p>Hola, ' . $_SESSION['username'] . '!</p>';
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>

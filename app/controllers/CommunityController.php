@@ -16,6 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'registerCommunit
     $communityController->create();
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'updateCommunity') {
+    if (isset($_POST['setActive'])) {
+        $community_id = $_POST['setActive'];
+        $communityController->activateCommunity($community_id);
+    } elseif (isset($_POST['setInactive'])) {
+        $community_id = $_POST['setInactive'];
+        $communityController->deactivateCommunity($community_id);
+    }
+}
+
+
+
 class CommunityController
 {
     private $model;
@@ -31,7 +43,7 @@ class CommunityController
             $descripcio = $_POST['descripcio'];
             $comunitat_autonoma = $_POST['comunitat_autonoma'];
 
-            $this->model->create2($nom_comunitat, $descripcio, $comunitat_autonoma);
+            $this->model->createCommunity($nom_comunitat, $descripcio, $comunitat_autonoma);
 
             header("Location: ../views/communityCreated.php");
         } catch (Exception $e) {
@@ -42,5 +54,28 @@ class CommunityController
     public function index()
     {
         return $this->model->getAll();
+    }
+
+    public function activateCommunity($community_id)
+    {
+        try {
+            $this->model->setCommunityActive($community_id);
+
+            header("Location: ../views/communityList.php");
+        } catch (Exception $e) {
+            echo "Error en el controlador: " . $e->getMessage();
+        }
+    }
+
+    public function deactivateCommunity($community_id)
+    {
+
+        try {
+            $this->model->setCommunityInactive($community_id);
+
+            header("Location: ../views/communityList.php");
+        } catch (Exception $e) {
+            echo "Error en el controlador: " . $e->getMessage();
+        }
     }
 }
