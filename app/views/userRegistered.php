@@ -1,5 +1,6 @@
-<?require('./header/header.php');?>
-
+<? include('../views/header/header.php'); 
+?>
 <h1>usuari creat amb exit</h1>
 
-<?require('./footer/footer.php');?>
+<?
+include('../views/footer/footer.php'); 
