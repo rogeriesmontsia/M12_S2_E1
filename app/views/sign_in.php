@@ -7,6 +7,7 @@
     <title>Sig In</title>
 </head>
 <body>
+
     <?php include("./header/header.php"); ?>
     <?php include("../controllers/LoginController.php"); ?>
 
@@ -21,7 +22,7 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" placeholder="Write your email"  id="email" required>
+                            <input type="email" class="form-control" placeholder="Write your email"  name="email" id="email" required>
                         </div>
                         <div class="form-group">
                             <label for="pass">Password</label>
@@ -43,7 +44,8 @@
             <div class="col"></div>
         </div>  
     </div>
-    <script src="public/assets/sign_in.js"></script>
+    <?php include("./footer/footer.php"); ?>
+
+    <script src="../public/assets/sign_in.js"></script>
 </body>
-    <?php require("./footer/footer.php"); ?>
 </html>
