@@ -64,8 +64,8 @@
             <div class="col-lg-5">
               <nav class="site-navigation text-left mr-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                  <li><a href="about.html" class="nav-link">Sobre nosotros</a></li>
-                  <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="#sobre-nosotros" class="nav-link">Sobre nosotros</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
                   <li><a href="contact.html" class="nav-link">Acceso</a></li>
                 </ul>
               </nav>
@@ -86,8 +86,7 @@
 
 
     <script src="/views/header/js/jquery-3.3.1.min.js"></script>
-    <script src="/views/header/js/popper.min.js"></script>
-    <script src="/views/header/js/bootstrap.min.js"></script>
+  
     <script src="/views/header/js/jquery.sticky.js"></script>
     <script src="/views/header/js/main.js"></script>
   </body>

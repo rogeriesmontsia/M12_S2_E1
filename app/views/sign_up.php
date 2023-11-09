@@ -12,7 +12,7 @@
     <div class="container d-flex justify-content-center align-items-center">
         <div>
             <h1 class="text-center">Formulari de registre</h1>
-            <form id="formulario" action="../controllers/UserController.php" method="post">
+            <form id="formulario" action="../controllers/UserController.php?action=signup" method="post">
                 <div class="alert alert-danger" id="generalAlert" role="alert"></div>
                 <div class="row">
                     <div class="col-md-12">
