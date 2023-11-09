@@ -15,21 +15,26 @@
         include './header/header.php';
     ?>
     <div class = "container">
-        <form class="p-5">
+        <form class="p-5" action = "../controllers/ProductControler.php" method="POST" >
             <div class="mb-4">
-                <label for="nombre">Nom</label>
-                <input type="text" class="form-control" id="nom" placeholder="Escriu el teu nom">
+                <label for="title">Titol</label>
+                <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el teu nom">
+            </div>
+
+            <div class="mb-4">
+                <label for="Categoria">Nom</label>
+                <input type="text" class="form-control" id="category" name = "category" placeholder="Escriu el teu nom">
             </div>
 
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-                <textarea class="form-control" id="descripcion" rows="3" placeholder="Escribe una descripción"></textarea>
+                <textarea class="form-control" id="descripcion" name = "description" rows="3" placeholder="Escribe una descripción"></textarea>
             </div>
 
             <div id="dropzone">
                 <p>Arrastra y suelta tus archivos aquí</p>
-                <input type="file" id="fileInput" multiple style="display: none;">
-                <table id="file-table" class = "table">
+                <input type="file" id="fileInput" name = "imatges[]" multiple style="display: none;" enctype="multipart/form-data">
+                <table id="file-table" name = "images" class = "table">
                     <tr id="row-1"></tr>
                     <tr id="row-2"></tr>
                 </table>
