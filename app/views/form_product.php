@@ -21,11 +21,6 @@
                 <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el teu nom">
             </div>
 
-            <div class="mb-4">
-                <label for="Categoria">Nom</label>
-                <input type="text" class="form-control" id="category" name = "category" placeholder="Escriu el teu nom">
-            </div>
-
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
                 <textarea class="form-control" id="descripcion" name = "description" rows="3" placeholder="Escribe una descripción"></textarea>
