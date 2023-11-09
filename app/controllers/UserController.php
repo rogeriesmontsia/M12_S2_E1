@@ -31,7 +31,7 @@ class UserController
                 $pass = md5($_POST['pass']);
                 $nom = $_POST['nom'];
 
-                $this->model->create2($email, $pass, $nom);
+                $this->model->createUser($email, $pass, $nom);
 
                 header("Location: ../views/userRegistered.php");
             } catch (Exception $e) {

@@ -16,7 +16,7 @@ class User {
         $this->conn = $database->connect();
     }
 
-    public function create2($email, $pass, $nom)
+    public function createUser($email, $pass, $nom)
     {
         try {
             $query = "INSERT INTO " . $this->table_name . "(
