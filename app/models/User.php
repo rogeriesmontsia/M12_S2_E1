@@ -7,6 +7,8 @@ class User {
     private $table_name = "users";
     private $id;
     private $email;
+    private $role;
+    private $userName;
 
     public function __construct()
     {
@@ -45,7 +47,7 @@ class User {
     public function login($email, $password)
     {
         try {
-            $query = "SELECT id_user, email FROM " . $this->table_name . " 
+            $query = "SELECT id_user, email, role, username FROM " . $this->table_name . " 
                       WHERE email = :email AND password = :password";
 
             $stmt = $this->conn->prepare($query);
@@ -60,6 +62,8 @@ class User {
             if ($user) {
                 $this->id = $user['id_user'];
                 $this->email = $user['email'];
+                $this->role = $user['role'];
+                $this->userName = $user['username'];
                 return true; // Usuario autenticado, se devuelve su información
             } else {
                 return false; // Las credenciales no coinciden, el inicio de sesión falló
@@ -78,6 +82,15 @@ class User {
     public function getEmail()
     {
         return $this->email; // Asumiendo que tienes una propiedad "email" en tu clase
+    }
+
+    public function getRole()
+    {
+        return $this->role; // Asumiendo que tienes una propiedad "email" en tu clase
+    }
+
+    public function getUsername() {
+        return $this->userName;
     }
 
 }

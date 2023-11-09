@@ -1,4 +1,13 @@
-<?php include('./header/header.php'); ?>
+<?php
+session_start();
+include('./header/header.php');
+
+// Asegúrate de que la sesión esté iniciada antes de intentar acceder a $_SESSION
+
+
+// Accede al valor de 'id_user' en $_SESSION
+echo $_SESSION['user_id'];
+?>
 
 <head>
     <title>Formulario para crear una comunidad</title>

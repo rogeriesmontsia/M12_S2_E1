@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 require_once 'Database.php';
 
 class Community
@@ -16,8 +16,7 @@ class Community
     public function createCommunity($nom_comunitat, $descripcio, $comunitat_autonoma)
     {
         try {
-            $id_admin = 6;
-            //$id_admin = $_SESSION['id_user'];
+            $id_admin = $_SESSION['user_id'];
             $query = "INSERT INTO " . $this->table_name . "(
                         id_admin,
                         name, 
@@ -45,18 +44,32 @@ class Community
     }
 
     public function getAll()
-    {
-        $userRole = 'user';
-        if ($userRole == 'superAdmin') {
-            $query = "SELECT * FROM $this->table_name";
-        } else if ($userRole == 'user') {
-            $query = 'SELECT * FROM ' . $this->table_name . ' WHERE isActive = 1';
-        }
+{
+
+    // Obtiene el rol del usuario de la sesión
+    $userRole = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+
+    // Variable para almacenar la consulta
+    $query = '';
+
+    if ($userRole == 'superAdmin') {
+        $query = "SELECT * FROM $this->table_name";
+    } else if ($userRole == 'user') {
+        $query = 'SELECT * FROM ' . $this->table_name . ' WHERE isActive = 1';
+    }
+
+    // Verifica que $query no esté vacío antes de ejecutar la consulta
+    if (!empty($query)) {
         $this->conn->exec("set names utf8");
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        // Manejar el caso donde $query está vacío, por ejemplo, lanzar una excepción o retornar un valor predeterminado
+        return [];
     }
+}
+
 
     public function setCommunityActive($community_id)
     {

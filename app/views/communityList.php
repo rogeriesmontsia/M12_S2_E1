@@ -1,7 +1,8 @@
 <?php
+//session_start();
 include './header/header.php';
 require_once '../controllers/CommunityController.php';
-$userRole = 'user';
+$userRole = $_SESSION['role'];
 ?>
 
 <body>
@@ -15,7 +16,8 @@ $userRole = 'user';
                     <th>Descripción</th>
                     <th>Comunidad Autónoma</th>
                     <?php
-                    $userRole = 'user';
+                    $userRole = $_SESSION['role'];
+                    //$userRole = 'user';
                     // Aquí debes verificar el rol del usuario y mostrar el botón en consecuencia
                     //$userRole = obtenerRolUsuario(); // Debes reemplazar esto con tu lógica real para obtener el rol del usuario
                     if ($userRole == 'superAdmin') {
@@ -35,6 +37,7 @@ $userRole = 'user';
                         <td><?= $community['region'] ?></td>
                         <td>
                             <?php
+                            $userRole = $_SESSION['role'];
                             // $userRole = 'superAdmin';
                             // Aquí debes verificar el rol del usuario y mostrar el botón en consecuencia
                             //$userRole = obtenerRolUsuario(); // Debes reemplazar esto con tu lógica real para obtener el rol del usuario

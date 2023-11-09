@@ -14,6 +14,8 @@ if (isset($_POST['email'])){
             //almacena informacion del usuario en la sesion
             $_SESSION['user_id'] = $user->getId();
             $_SESSION['email'] = $user->getEmail();
+            $_SESSION['role'] = $user->getRole();
+            $_SESSION['username'] = $user->getUsername();
 
             //redirige al usuario
             require_once('../views/landingpage/landingpage.php');
