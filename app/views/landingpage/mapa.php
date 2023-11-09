@@ -45,6 +45,8 @@
 
     <h1 style="color: black; font-size: 36px; text-align: center; margin-top:5%">Encuentra tu ecomunidad mas cercana</h1>
         <p style="color: black; font-size: 18px;text-align: justify; margin-left: 20%;margin-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <button id="miBoton">Ejecutar Código</button>
             <div id="map-containes">
 						<section id="banner" >
 								<span class="image image-full" style="margin-left: 20%; margin-right: 20%;">
@@ -53,16 +55,36 @@
                                 </div>
                                 </div>
 <script>
-                                // Obtener todos los elementos de provincia
-const provincias = document.querySelectorAll('path');
+document.getElementById("miBoton").addEventListener("click", function() {
+// Cargar el archivo JSON
+fetch('.arbol.json')
+  .then(response => response.json())
+  .then(data => {
+    // Crear un array para almacenar las comunidades autónomas y provincias
+    const comunidadesYProvincias = [];
 
-// Agregar un evento de clic a cada provincia
-provincias.forEach(provincia => {
-  provincia.addEventListener('click', () => {
-    const comarcas = provincia.getAttribute('data-comarcas');
-    // Mostrar las comarcas en algún lugar de la página (por ejemplo, un div)
-    //document.getElementById('comarcas-info').textContent = `Comarcas: ${comarcas}`;
-    alert(`Comarcas: ${comarcas}`);
+    // Recorrer los datos y extraer las comunidades y provincias
+    data.forEach(comunidad => {
+      const comunidadAutonoma = {
+        label: comunidad.label,
+        provinces: []
+      };
+
+      comunidad.provinces.forEach(provincia => {
+        const provinciaData = {
+          label: provincia.label
+        };
+        comunidadAutonoma.provinces.push(provinciaData);
+      });
+
+      comunidadesYProvincias.push(comunidadAutonoma);
+    });
+
+    // Imprimir el resultado
+    console.log(comunidadesYProvincias);
+  })
+  .catch(error => {
+    console.error('Error al cargar el archivo JSON: ' + error);
   });
 });
 </script>
