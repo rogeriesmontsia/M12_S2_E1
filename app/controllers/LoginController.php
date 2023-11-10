@@ -18,7 +18,7 @@ if (isset($_POST['email'])){
             $_SESSION['username'] = $user->getUsername();
 
             //redirige al usuario
-            require_once('../views/landingpage/landingpage.php');
+            header('Location: ../views/landingpage/landingpage.php');
 
             exit;
         }else{
