@@ -23,7 +23,7 @@ $userRole = $_SESSION['role'];
                     if ($userRole == 'superAdmin') {
                         echo '<th>Acciones</th><th>Activa</th>';
                     }else if ($userRole == 'user') {
-                        echo '<th>Solicitar acceso</th>';
+                        echo '<th>Unirme a la comunidad</th>';
                     }
                     ?>
 
@@ -50,7 +50,7 @@ $userRole = $_SESSION['role'];
                                 echo '<td>' . $community['isActive'] . '</td>';
                             } else if ($userRole == 'user') {
                                 echo '<form action="../controllers/CommunitiesUsersController.php?action=requestAccess" method="POST">';
-                                echo '<button type="submit" class="btn btn-success" name="request" value="' . $community['id_community'] . '">Solicitar</button>';
+                                echo '<button type="submit" class="btn btn-success" name="request" value="' . $community['id_community'] . '">Unirme</button>';
                             }
                             ?>
                         </td>
