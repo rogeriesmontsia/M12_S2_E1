@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = 'mariadb';
-    private $db_name = 'testdb';
-    private $username = 'testuser';
-    private $password = 'testpassword';
+    private $db_name = 'k0munitat';
+    private $username = 'root';
+    private $password = 'rootpwd';
     private $conn;
 
     public function connect() {

@@ -70,6 +70,17 @@ class Community
     }
 }
 
+public function getCommunityById($community_id) {
+    $query = 'SELECT * FROM ' . $this->table_name . ' WHERE id_community = :community_id';
+    $stmt = $this->conn->prepare($query);
+    $this->conn->exec("set names utf8");
+    $stmt->bindParam(':community_id', $community_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
 
     public function setCommunityActive($community_id)
     {

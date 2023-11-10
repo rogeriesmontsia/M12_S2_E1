@@ -10,6 +10,7 @@ if (!$conn) {
 } else {
     $communityController = new CommunityController();
     $communities = $communityController->index(); // Obtener las comunidades
+    $community = $communityController->getCommunityById($community_id);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'registerCommunity') {
@@ -25,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'updateCommunity'
         $communityController->deactivateCommunity($community_id);
     }
 }
-
 
 
 class CommunityController
@@ -54,6 +54,14 @@ class CommunityController
     public function index()
     {
         return $this->model->getAll();
+    }
+
+    public function getCommunityById($community_id) {
+        // Aquí deberías usar el modelo para obtener la información de la comunidad
+        $communityModel = new Community(); // Asegúrate de ajustar esto según tu implementación
+        $community = $communityModel->getCommunityById($community_id);
+    
+        return $community;
     }
 
     public function activateCommunity($community_id)
