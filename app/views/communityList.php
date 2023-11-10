@@ -22,7 +22,7 @@ $userRole = $_SESSION['role'];
                     //$userRole = obtenerRolUsuario(); // Debes reemplazar esto con tu lógica real para obtener el rol del usuario
                     if ($userRole == 'superAdmin') {
                         echo '<th>Acciones</th><th>Activa</th>';
-                    }else if ($userRole == 'user') {
+                    } else if ($userRole == 'user') {
                         echo '<th>Unirme a la comunidad</th>';
                     }
                     ?>
@@ -32,8 +32,8 @@ $userRole = $_SESSION['role'];
             <tbody>
                 <?php foreach ($communities as $community) : ?>
                     <tr>
-                        <td><?= $community['name'] ?></td>
-                        <td><a href="communityPage.php?id=<?= $community['id_community'] ?>"><?= $community['description'] ?></a></td>
+                        <td><a href="communityPage.php?id=<?= $community['id_community'] ?>"><?= $community['name'] ?></a></td>
+                        <td><?= $community['description'] ?></td>
                         <td><?= $community['region'] ?></td>
                         <td>
                             <?php

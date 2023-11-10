@@ -10,6 +10,7 @@ $communityController = new CommunityController();
 // Obtener el ID de la comunidad desde la URL
 $communityId = isset($_GET['id']) ? $_GET['id'] : null;
 
+$userRole = $_SESSION['role'];
 // $communityId = 1;
 
 // Verificar si se proporcionó un ID válido

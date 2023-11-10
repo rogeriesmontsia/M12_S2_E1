@@ -76,17 +76,17 @@ class User {
 
     public function getId()
     {
-        return $this->id; // Asumiendo que tienes una propiedad "id" en tu clase
+        return $this->id; 
     }
 
     public function getEmail()
     {
-        return $this->email; // Asumiendo que tienes una propiedad "email" en tu clase
+        return $this->email; 
     }
 
     public function getRole()
     {
-        return $this->role; // Asumiendo que tienes una propiedad "email" en tu clase
+        return $this->role; 
     }
 
     public function getUsername() {
