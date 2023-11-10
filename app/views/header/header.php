@@ -1,3 +1,13 @@
+<?php session_start();
+
+// Verifica si 'user_name' está definido en la sesión
+    if (isset($_SESSION)){
+    echo '<p>Hola, ' . $_SESSION['username'] . '!</p>';
+    }
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>

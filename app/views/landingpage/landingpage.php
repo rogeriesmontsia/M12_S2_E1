@@ -1,12 +1,12 @@
 <?php
 
-include('../views/header/header.php');
+include('../header/header.php');
 
 
 include('nosotros.php');
 
 include('mapa.php');
-include('../views/footer/footer.php');
+include('../footer/footer.php');
 
 
 ?>
