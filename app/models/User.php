@@ -44,7 +44,7 @@ class User {
 
 // function login 
 
-    public function login($email, $password)
+    public function login($email, $password_md5)
     {
         try {
             $query = "SELECT id_user, email, role, username FROM " . $this->table_name . " 
@@ -53,7 +53,7 @@ class User {
             $stmt = $this->conn->prepare($query);
 
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':password', $password_md5);
 
             $stmt->execute();
 

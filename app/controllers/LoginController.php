@@ -5,9 +5,10 @@ if (isset($_POST['email'])){
 
         $email = htmlspecialchars($_POST['email']);
         $password = htmlspecialchars($_POST['pass']);
+        $password_md5 = md5($password);
         $user = new User();
 
-        if($user->login($email, $password)){
+        if($user->login($email, $password_md5)){
             //las credenciales son correctas, iniciar sesion y redirigir al usuario
             session_start(); 
 
