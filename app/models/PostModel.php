@@ -37,7 +37,22 @@ class PostModel {
         } else {
             return null;
         }
-    }      
+    }  
+    
+    public function obtenirTots ($postId) {
+        $sql = "SELECT * FROM posts WHERE id_post = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $postId);
+        $stmt->execute();
+
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if ($resultado) {
+            return $resultado;
+        } else {
+            return null;
+        }
+    }
 }
 
 ?>

@@ -12,15 +12,28 @@ class PostControl {
 
     //Entre $productId que es el id del producte 
     // $nimatge el nom de la imatge que es solicita
-    public function mostrarTitol($productId) {
-        $preu = $this->postControl->obtenirTitle($productId);
-        return $preu[0]["title"]; //sols tindra un resultat
+    public function mostrarTitol($postId) {
+        $title = $this->postControl->obtenirTitle($postId);
+        return $title[0]["title"]; //sols tindra un resultat
     }
 
-    public function mostrarDescripcio($productId) {
-        $nom = $this->postControl->obtenirDescripcio($productId);
-        return $nom[0]["description"]; //sols tindra un resultat
+    public function mostrarDescripcio($postId) {
+        $descr = $this->postControl->obtenirDescripcio($postId);
+        return $descr[0]["description"]; //sols tindra un resultat
     }
+
+    public function mostrarPosts ($postId) {
+        $tots = $this->postControl->obtenirTots($postId);
+
+
+    }
+
+    public function mostrarAdvertisements ($postId) {
+        $nom = $this->postControl->obtenirTots($postId);
+
+    }
+
+
 }
 
 ?>
