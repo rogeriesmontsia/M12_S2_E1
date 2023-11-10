@@ -28,13 +28,12 @@ body {
 }
 
 .user-info-right {
-    text-align: left; /* Cambiar a la izquierda */
-    margin-left: 20px; /* Añadir margen izquierdo para separar del nombre de usuario */
+    text-align: center;
 }
 
 .user-name {
     font-size: 24px;
-    margin: 0; /* Eliminar el margen superior para alinear el nombre con la imagen */
+    margin: 10px 0;
 }
 
 .edit-button {
@@ -44,7 +43,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px; /* Añadir margen izquierdo para separar del nombre de usuario */
+    margin-top: 10px;
 }
 
 .post-count {
@@ -80,3 +79,79 @@ body {
 .post-image {
     max-width: 100%;
 }
+
+/* Agrega estos estilos a tu archivo CSS existente o crea uno nuevo */
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos para los botones y acciones del modal */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.edit-post-button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.three-dots-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.more-options {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+}
+
+/* Agrega más estilos según sea necesario para comentarios, likes, etc. */

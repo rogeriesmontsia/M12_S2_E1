@@ -14,12 +14,13 @@
         </div>
         <div class="user-info-right">
             <h1 class="user-name">Tivik17</h1>
-            <button class="edit-button">Editar Perfil</button>
-            <p class="post-count">2 publicaciones</p>
             <p class="user-fullname">Tatiana Valentinyova</p>
             <p class="user-description">Una pequeña descripción del usuario.</p>
+            <a href="editar_perfil.php"><button class="edit-button">Editar Perfil</button> </a>
         </div>
+        <div><p class="post-count">2 publicaciones</p></div>
     </div>
+        
 
     <!-- Contenedor de las publicaciones -->
     <div class="post-container">
@@ -53,6 +54,7 @@
             </div>
         </div>
     </div>
+    
 
     <script>
         // Función para abrir el modal
@@ -81,7 +83,10 @@
                 modal.style.display = "none";
             }
         }
+        
     </script>
+    <footer>
     <?php include('../footer/footer.php'); ?>
+    </footer>
 </body>
 </html>

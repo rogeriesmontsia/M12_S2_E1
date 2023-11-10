@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+
+/* Estilos para la tabla principal */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+
+/* Estilos para la sección de información del usuario a la izquierda */
+.user-info-left {
+    flex: 1;
+    text-align: center;
+}
+
+
+.user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+.change-image-button {
+    display: block;
+    margin: 10px auto;
+}
+
+
+/* Estilos para la sección de información del usuario a la derecha */
+.user-info-right {
+    flex: 2;
+    margin-left: 20px;
+}
+
+
+/* Estilos para los campos editables */
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+
+input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+/* Estilos para los botones al final de la sección de información del usuario */
+.save-button,
+.cancel-button,
+.change-password-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* Estilos para los modales */
+/* Estilos para el modal de cambiar contraseña */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 254, 254);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1;
+    width: 70%;
+    /* Cambia el ancho del modal al 70% de la pantalla */
+
+    /* Establece un ancho máximo para el modal */
+}
+
+.modal-content {
+    text-align: center;
+}
+
+
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .user-info-left,
+    .user-info-right {
+        margin: 0;
+    }
+}
