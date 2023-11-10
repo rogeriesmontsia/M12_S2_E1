@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="editar_perfil.css">
+    <link rel="stylesheet" href="editarperfil.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -34,8 +34,8 @@
 <body>
     <?php include('../header/header.php'); ?>
     <div class="profile-container">
-        <div class="user-info-left">
-            <img class="user-image" src="./images/usuariosinimagen.png" alt="Imagen de Usuario" id="userImage">
+        <div id="containerImage" class="user-info-left">
+            <img class="user-image" src="./perfil_images/usuarioSinImagen.png" alt="Imagen de Usuario" id="userImage">
             <button class="change-image-button" onclick="openImageModal()">Cambiar Imagen</button>
         </div>
         <div class="user-info-right">
@@ -54,7 +54,7 @@
                 <div class="button-group">
                     <button class="delete-button" onclick="deleteImage()">Eliminar Imagen</button>
                     <button class="save-button" type="submit">Guardar Cambios</button>
-                    <button class="cancel-button" onclick="GoBack()">Cancelar</button>
+                    <button class="cancel-button">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -158,19 +158,6 @@
             closeImageModal();
         }
 
-        function GoBack() {
-            // Obtener la ubicación actual
-            var currentLocation = window.location.href;
-
-            // Obtener la ruta del directorio actual
-            var currentDirectory = currentLocation.substring(0, currentLocation.lastIndexOf("/"));
-
-            // Construir la URL completa del archivo perfil_personal.php
-            var perfilPersonalURL = currentDirectory + "/perfil_personal.php";
-
-            // Redireccionar a la nueva ubicación
-            window.location.href = perfilPersonalURL;
-        }
     </script>
 
     <footer>

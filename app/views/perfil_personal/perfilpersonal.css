@@ -1,34 +1,42 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Cambiar el fondo a un tono claro */
+  /* Nuevos estilos para mejorar la apariencia general */
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
 }
 
-.profile-container {
-    max-width: 800px; /* Aumentar el ancho del contenedor del perfil */
+.container {
+    max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-container {
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    background-color: #fff; /* Fondo blanco */
-    padding: 20px; /* Agregar espaciado alrededor del perfil */
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 .user-info-left {
-    text-align: left;
+    text-align: center;
 }
 
 .user-image {
-    max-width: 200px; /* Aumentar el tamaño de la imagen de perfil */
+    max-width: 150px;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .user-info-right {
-    text-align: center;
+    text-align: left;
+    margin-left: 20px;
 }
 
 .user-name {
@@ -46,22 +54,6 @@ body {
     margin-top: 10px;
 }
 
-.post-count {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-.user-fullname {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-.user-description {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-/* Estilos para las tarjetas de publicaciones (ajusta según tus necesidades) */
 .post-container {
     display: flex;
     flex-wrap: wrap;
@@ -74,14 +66,14 @@ body {
     padding: 10px;
     background-color: #f9f9f9;
     cursor: pointer;
+    width: 200px;
 }
 
 .post-image {
     max-width: 100%;
+    height: auto;
 }
 
-/* Agrega estos estilos a tu archivo CSS existente o crea uno nuevo */
-/* Estilos para el modal */
 .modal {
     display: none;
     position: fixed;
@@ -109,7 +101,6 @@ body {
     height: auto;
 }
 
-/* Estilos para los botones y acciones del modal */
 .modal-actions {
     display: flex;
     justify-content: space-between;
@@ -153,5 +144,3 @@ body {
     padding: 12px 16px;
     display: block;
 }
-
-/* Agrega más estilos según sea necesario para comentarios, likes, etc. */
