@@ -13,7 +13,7 @@ if (isset($_POST['email'])){
             session_start(); 
 
             //almacena informacion del usuario en la sesion
-            $_SESSION['user_id'] = $user->getId();
+            $_SESSION['id_user'] = $user->getId();
             $_SESSION['email'] = $user->getEmail();
             $_SESSION['role'] = $user->getRole();
             $_SESSION['username'] = $user->getUsername();

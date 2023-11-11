@@ -6,7 +6,7 @@ include('./header/header.php');
 
 
 // Accede al valor de 'id_user' en $_SESSION
-echo $_SESSION['user_id'];
+echo $_SESSION['id_user'];
 ?>
 
 <head>

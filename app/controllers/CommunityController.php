@@ -10,7 +10,8 @@ if (!$conn) {
 } else {
     $communityController = new CommunityController();
     $communities = $communityController->index(); // Obtener las comunidades
-    $community = $communityController->getCommunityById($community_id);
+    
+    // $community = $communityController->getCommunityById($community_id);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'registerCommunity') {

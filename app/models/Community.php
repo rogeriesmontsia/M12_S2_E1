@@ -15,7 +15,7 @@ class Community
     public function createCommunity($nom_comunitat, $descripcio, $comunitat_autonoma)
     {
         try {
-            $id_admin = $_SESSION['user_id'];
+            $id_admin = $_SESSION['id_user'];
             $query = "INSERT INTO " . $this->table_name . "(
                         id_admin,
                         name, 
