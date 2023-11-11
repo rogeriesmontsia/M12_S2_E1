@@ -90,11 +90,11 @@ function comprovarContrasenya() {
         $('#password2').addClass('border-danger');
         $('#alertPass').text('Les contrasenyes han de coincidir.').show();
     } 
-    // else if (password === password2) {
-    //     $('#alertPass').hide();
-    //     $('#password, #password2').removeClass('border-danger');
-    //     $('#password, #password2').addClass('border-success');
-    // } 
+    else if (password === password2) {
+        $('#alertPass').hide();
+        $('#password, #password2').removeClass('border-danger');
+        $('#password, #password2').addClass('border-success');
+    } 
     else {
         $('#alertPass').hide();
         $('#password, #password2').removeClass('border-danger');

@@ -1,8 +1,8 @@
-<?php session_start();
+<?php //session_start();
 
 // Verifica si 'username' está definido y no está vacío en la sesión
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-  echo '<p>Hola, ' . $_SESSION['username'] . '! <a href="../logout.php">Cerrar sesión</a></p>';
+  echo '<p>Hola, ' . $_SESSION['username'] . '! <a href="../views/logout.php">Cerrar sesión</a></p>';
 } 
 
 ?>
@@ -54,9 +54,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
         <div class="col-lg-5">
           <nav class="site-navigation text-right ml-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-              <li class="active"><a href="header.html" class="nav-link">Inici</a></li>
-              <li><a href="project.html" class="nav-link">Proyectos</a></li>
-              <li><a href="services.html" class="nav-link">Tu comunidad</a></li>
+              <li class="active"><a href="../../index.php" class="nav-link">Inici</a></li>
+              <li><a href="../views/communityList.php" class="nav-link">Proyectos</a></li>
+              <li><a href="../views/communityList.php" class="nav-link">Comunidades</a></li>
             </ul>
           </nav>
         </div>
@@ -80,7 +80,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
               <li><a href="blog.html" class="nav-link">Blog</a></li>
               
               <?php if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-                echo '<li><a href="../views/sign_in.php" class="nav-link">Mi perfil</a></li>';
+                echo '<li><a href="../views/perfil_personal/perfil_personal.php" class="nav-link">Mi perfil</a></li>';
               } else {
                 echo '<li><a href="/views/sign_in.php" class="nav-link">Acceso</a></li>';
               }?>

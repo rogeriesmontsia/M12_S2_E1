@@ -62,3 +62,4 @@ if (!$community) {
 
 </body>
 </html>
+<?php include('./footer/footer.php');

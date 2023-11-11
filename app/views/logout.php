@@ -7,6 +7,6 @@ session_unset();
 session_destroy();
 
 // Redirige al usuario a la página de inicio de sesión u otra página
-header('Location: ../views/sign_in.php');
+header('Location: ../index.php');
 exit;
 ?>

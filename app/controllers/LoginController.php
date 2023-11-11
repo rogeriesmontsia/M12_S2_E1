@@ -19,7 +19,7 @@ if (isset($_POST['email'])){
             $_SESSION['username'] = $user->getUsername();
 
             //redirige al usuario
-            header('Location: ../views/landingpage/landingpage.php');
+            header('Location: ../index.php');
 
             exit;
         }else{

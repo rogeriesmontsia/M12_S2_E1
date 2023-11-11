@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 text-center">
-                        <button id="boto-registrar" type="button" class="mb-3 btn btn-primary" onclick="formulari()">Registrarme</button>
+                        <button id="boto-registrar" type="submit" class="mb-3 btn btn-primary">Registrarme</button>
                     </div>
                 </div>
             </form>

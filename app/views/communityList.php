@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include './header/header.php';
 require_once '../controllers/CommunityController.php';
 $userRole = $_SESSION['role'];
@@ -7,7 +7,12 @@ $userRole = $_SESSION['role'];
 
 <body>
     <div class="container">
-        <h1 class="mt-5">Listado de comunidades</h1>
+            <h1 class="mt-5">Listado de comunidades</h1>
+            <?php
+            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+                echo '<div class="text-right"><a href="./form_create_community.php" class="btn btn-success" role="button">Solicitud para crear una comunidad</a></div>';
+            }
+            ?>
 
         <table class="table table-striped mt-4">
             <thead>
