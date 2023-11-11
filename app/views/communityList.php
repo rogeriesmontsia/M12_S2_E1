@@ -1,5 +1,4 @@
 <?php
-// session_start();
 include './header/header.php';
 require_once '../controllers/CommunityController.php';
 $userRole = $_SESSION['role'];
@@ -7,13 +6,12 @@ $userRole = $_SESSION['role'];
 
 <body>
     <div class="container">
-            <h1 class="mt-5">Listado de comunidades</h1>
-            <?php
-            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-                echo '<div class="text-right"><a href="./form_create_community.php" class="btn btn-success" role="button">Solicitud para crear una comunidad</a></div>';
-            }
-            ?>
-
+        <h1 class="mt-5">Listado de comunidades</h1>
+        <?php
+        if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+            echo '<div class="text-right"><a href="./form_create_community.php" class="btn btn-success" role="button">Solicitud para crear una comunidad</a></div>';
+        }
+        ?>
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
@@ -21,17 +19,12 @@ $userRole = $_SESSION['role'];
                     <th>Descripción</th>
                     <th>Comunidad Autónoma</th>
                     <?php
-                    // $userRole = $_SESSION['role'];
-                    //$userRole = 'user';
-                    // Aquí debes verificar el rol del usuario y mostrar el botón en consecuencia
-                    //$userRole = obtenerRolUsuario(); // Debes reemplazar esto con tu lógica real para obtener el rol del usuario
                     if ($userRole == 'superAdmin') {
                         echo '<th>Acciones</th><th>Activa</th>';
                     } else if ($userRole == 'user') {
                         echo '<th>Unirme a la comunidad</th>';
                     }
                     ?>
-
                 </tr>
             </thead>
             <tbody>
@@ -42,11 +35,6 @@ $userRole = $_SESSION['role'];
                         <td><?= $community['region'] ?></td>
                         <td>
                             <?php
-                            // $userRole = $_SESSION['role'];
-                            // $userRole = 'superAdmin';
-                            // Aquí debes verificar el rol del usuario y mostrar el botón en consecuencia
-                            //$userRole = obtenerRolUsuario(); // Debes reemplazar esto con tu lógica real para obtener el rol del usuario
-
                             if ($userRole == 'superAdmin') {
                                 echo '<form action="../controllers/CommunityController.php?action=updateCommunity" method="POST">';
                                 echo '<button type="submit" class="btn btn-primary" name="setActive" value="' . $community['id_community'] . '">Habilitar comunidad</button>';
@@ -61,10 +49,8 @@ $userRole = $_SESSION['role'];
                         </td>
                     </tr>
                 <?php endforeach; ?>
-
             </tbody>
         </table>
-
     </div>
 </body>
 <?php include './footer/footer.php';

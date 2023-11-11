@@ -1,12 +1,10 @@
-<?php //session_start();
+<?php session_start();
 
 // Verifica si 'username' está definido y no está vacío en la sesión
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
   echo '<p>Hola, ' . $_SESSION['username'] . '! <a href="../views/logout.php">Cerrar sesión</a></p>';
 } 
-
 ?>
-
 
 <!doctype html>
 <html lang="en">
