@@ -5,14 +5,6 @@ require_once '../controllers/CommunitiesUsersController.php';
 $userRole = $_SESSION['role'];
 ?>
 
-<?php
-
-
-// Accede al valor de 'id_user' en $_SESSION
-echo $_SESSION['id_user'];
-
-?>
-
 <body>
     <div class="container">
         <h1 class="mt-5">Listado de comunidades</h1>
@@ -56,16 +48,14 @@ echo $_SESSION['id_user'];
                             if ($isMember) {
                                 echo '<form action="../controllers/CommunitiesUsersController.php?action=requestExit" method="POST">';
                                 echo '<input type="hidden" name="id_user" value="' . $_SESSION['id_user'] . '">';
-                                echo '<button class="btn btn-danger" name="exitCommunity" value="'. $community['id_community'] . '">Abandonar</button>';
+                                echo '<button class="btn btn-danger" name="exitCommunity" value="' . $community['id_community'] . '">Abandonar</button>';
                                 echo '</form>';
                             } else {
-                            echo '<form action="../controllers/CommunitiesUsersController.php?action=requestAccess" method="POST">';
-                            echo '<input type="hidden" name="id_user" value="' . $_SESSION['id_user'] . '">';
-                            echo '<button type="submit" class="btn btn-success" name="requestAccess" value="' . $community['id_community'] . '">Unirme</button>';
-                            echo '</form>';
-
-
-                                }
+                                echo '<form action="../controllers/CommunitiesUsersController.php?action=requestAccess" method="POST">';
+                                echo '<input type="hidden" name="id_user" value="' . $_SESSION['id_user'] . '">';
+                                echo '<button type="submit" class="btn btn-success" name="requestAccess" value="' . $community['id_community'] . '">Unirme</button>';
+                                echo '</form>';
+                            }
                         }
                     endforeach; ?>
                         </td>

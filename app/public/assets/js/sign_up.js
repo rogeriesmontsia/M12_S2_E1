@@ -75,51 +75,32 @@ function comprovarContrasenya() {
     let password2 = $('#password2').val();
     let patroAlfaNumeric = /^[a-zA-Z0-9\s\-_.,'"/&(){}[\]<>]+$/;
 
+    // Restableix els estils i els missatges d'alerta
+    $('#password, #password2').removeClass('border-danger border-success');
+    $('#alertPass').hide().empty();
+
     if (password === '' && password2 === '') {
-        $('#password, #password2').addClass('border-danger');
-        $('#alertPass').text('La contrasenya és obligatòria.').show();
+        mostrarError('La contrasenya és obligatòria.');
     } else if (password.length < 8) {
-        $('#password, #password2').removeClass('border-success');
-        $('#password').addClass('border-danger');
-        $('#alertPass').text('La contrasenya ha de tenir com a mínim 8 caràcters.').show();
-    } else if (!password.match(patroAlfaNumeric) && !password2.match(patroAlfaNumeric)) {
-        $('#password, #password2').removeClass('border-success');
-        $('#password, #password2').addClass('border-danger');
-        $('#alertPass').text('La contrasenya ha de tenir un format vàlid.').show();
-    } else if (password2 !== '' && password !== password2) {
-        $('#password2').addClass('border-danger');
-        $('#alertPass').text('Les contrasenyes han de coincidir.').show();
-    } 
-    else if (password === password2) {
-        $('#alertPass').hide();
-        $('#password, #password2').removeClass('border-danger');
+        mostrarError('La contrasenya ha de tenir com a mínim 8 caràcters.');
+    } else if ( !password.match(patroAlfaNumeric) || !password2.match(patroAlfaNumeric) && password2 !=='' ) {
+        mostrarError('La contrasenya ha de tenir un format vàlid.');
+    } else if (password2 !== password) {
+        mostrarError('Les contrasenyes han de coincidir.');
+    } else {
         $('#password, #password2').addClass('border-success');
-    } 
-    else {
-        $('#alertPass').hide();
-        $('#password, #password2').removeClass('border-danger');
-        $('#password').addClass('border-success');
         return true;
     }
-    // } else if (password.length < 8) {
-    //     $('#password, #password2').removeClass('border-success');
-    //     $('#password').addClass('border-danger');
-    //     $('#alertPass').text('La contrasenya ha de tenir com a mínim 8 caràcters.').show();
-    // } else if (!password.match(patroAlfaNumeric) && !password2.match(patroAlfaNumeric)) {
-    //     $('#password, #password2').removeClass('border-success');
-    //     $('#password, #password2').addClass('border-danger');
-    //     $('#alertPass').text('La contrasenya ha de tenir un format vàlid.').show();
-    // } 
-    // else if (password2 !== '' && password !== password2) {
-    //     $('#alertPass').text('Cal introduir la mateixa contrasenya.').show();
-    //     $('#password, #password2').removeClass('border-success');
-    //     $('#password, #password2').addClass('border-danger');
-    // } else if (password === password2) {
-    //     $('#alertPass, #alertPass2').hide();
-    //     $('#password, #password2').removeClass('border-danger');
-    //     $('#password, #password2').addClass('border-success');
-    // }
+
+    return false;
+
+    function mostrarError(missatge) {
+        $('#password, #password2').addClass('border-danger');
+        $('#alertPass').text(missatge).show();
+    }
 }
+
+
 
 function comprovarNom() {
     let nom = $('#nom').val();
