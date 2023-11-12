@@ -1,24 +1,33 @@
-// Crea un mapa y configura la vista inicial
-const map = L.map('map').setView([40.416775, -3.703790], 6);
+//@charset "UTF-8";
+import fetch from 'node-fetch';
 
-// Agrega una capa de mapa base desde un CDN
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-}).addTo(map);
+// Cargar el archivo JSON
+fetch('arbol.json')
+  .then(response => response.json())
+  .then(data => {
+    // Crear un array para almacenar las comunidades autónomas y provincias
+    const comunidadesYProvincias = [];
 
-// Escucha clics en el mapa
-map.on('click', (e) => {
-    // Obtiene las coordenadas del clic
-    const latlng = e.latlng;
+    // Recorrer los datos y extraer las comunidades y provincias
+    data.forEach(comunidad => {
+      const comunidadAutonoma = {
+        label: comunidad.label,
+        provinces: []
+      };
 
-    // Consulta GeoAPI.es para obtener la información de la comunidad y localidades
-    fetch('http://apiv1.geoapi.es/comunidades?CPRO=22&CMUM=907&type=JSON&key=89f6de236556b0c94ee77ca11ad5216d7248ef866acf3d69a6c9845e7593d401&sandbox=1')
-        .then((response) => response.json())
-        .then((data) => {
-            // Muestra la información en la consola (puedes personalizar cómo mostrarla)
-            console.log(data);
-        })
-        .catch((error) => {
-            console.error('Error al consultar GeoAPI.es', error);
-        });
-});
+      comunidad.provinces.forEach(provincia => {
+        const provinciaData = {
+          label: provincia.label
+        };
+        comunidadAutonoma.provinces.push(provinciaData);
+      });
+
+      comunidadesYProvincias.push(comunidadAutonoma);
+    });
+
+    // Imprimir el resultado
+    console.log(comunidadesYProvincias);
+  })
+  .catch(error => {
+    console.error('Error al cargar el archivo JSON: ' + error);
+  });

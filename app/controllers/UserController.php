@@ -9,6 +9,9 @@ if (!$conn) {
     echo "Error al conectar a la base de datos.";
 } else {
     $userController = new UserController();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'signup') {
     $userController->create();
 }
 
@@ -23,18 +26,16 @@ class UserController
 
     public function create()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $email = $_POST['email'];
                 $pass = md5($_POST['pass']);
                 $nom = $_POST['nom'];
 
-                $this->model->create2($email, $pass, $nom);
+                $this->model->createUser($email, $pass, $nom);
 
                 header("Location: ../views/userRegistered.php");
             } catch (Exception $e) {
                 echo "Error en el controlador: " . $e->getMessage();
             }
-        }
     }
 }

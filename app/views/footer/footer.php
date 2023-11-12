@@ -43,9 +43,6 @@
 		</footer>
 		
 
-    <script src="/views/footer/js/jquery.min.js"></script>
-    <script src="/views/footer/js/popper.js"></script>
-    <script src="/views/footer/js/bootstrap.min.js"></script>
-    <script src="/views/footer/js/main.js"></script>
+ 
   </body>
 </html>
