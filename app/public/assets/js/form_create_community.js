@@ -36,7 +36,7 @@ function comprovarDades() {
     comprovarCheckBox();
     if (nomComunitat === '' || descripcioComunitat === '' || comunitatAutonoma === '') {
         $('#generalAlert').text('Completa tots els camps.').show();
-    }else {
+    }else if (comprovarNomComunitat() && comprovarDescripcio() && comprovarComunitatAutonoma() && comprovarCheckBox()) {
         $('#generalAlert').hide();
         return true;
     }
