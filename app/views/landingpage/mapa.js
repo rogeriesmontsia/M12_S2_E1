@@ -132,11 +132,15 @@ function mostrarPoblaciones(provincia) {
 }
 
 
-
 function cerrarModal() {
-  const modal = new bootstrap.Modal(document.getElementById("miModal"));
-  modal.hide();
-  
-    document.querySelector('.modal-backdrop').remove();
+  const modalElement = document.getElementById("miModal");
+  const modal = new bootstrap.Modal(modalElement);
 
+  modal.hide();
+
+  // Esperar a que se oculte el modal antes de limpiar
+  modalElement.addEventListener('hidden.bs.modal', function () {
+    modal.dispose();
+    document.querySelector('.modal-backdrop').remove();
+  });
 }

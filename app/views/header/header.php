@@ -50,14 +50,14 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 
 
-  <header class="site-navbar site-navbar-target bg-white" role="banner" style="position: sticky; top: 0;">
+  <header class="site-navbar site-navbar-target bg-white sticky-top" role="banner">
 
     <div class="container">
       <div class="row align-items-center position-relative">
         <!-- Menu esquerra (apartats important landing page)-->
 
         <div class="col-lg-5">
-          <nav class="site-navigation text-right ml-auto " role="navigation">
+          <nav class="site-navigation text-left ml-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
               <li class="active"><a href="../../index.php" class="nav-link">Inici</a></li>
               <li><a href="../views/communityList.php" class="nav-link">Proyectos</a></li>
@@ -79,7 +79,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
           <div class="ml-auto toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3 text-black"></span></a></div>
         </div>
         <div class="col-lg-5">
-          <nav class="site-navigation text-left mr-auto " role="navigation">
+          <nav class="site-navigation text-right mr-auto " role="navigation">
             <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
               <li><a href="#sobre-nosotros" class="nav-link">Sobre nosotros</a></li>
               <li><a href="blog.html" class="nav-link">Blog</a></li>
@@ -101,7 +101,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
   </header>
 
 
-  <div class="hero" style="background-image: url('/views/header/images/hero_1.jpg'); background-size: cover; background-position: center; width: 100%; height: 400px; position: relative;">
+  <div class="hero" style="background-image: url('/views/header/images/hero_1.jpg'); background-size: cover; background-position: center; width: 100%; height: 350px; position: relative;">
     <div style="background-color: rgba(0, 0, 0, 0.6 ); position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
     </div>
   </div>

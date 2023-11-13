@@ -11,7 +11,7 @@
                 <p>Buscamos fortalecer los lazos con la naturaleza y prevenir la sobreproducción de alimentos y productos. A través de nuestra aplicación web, podrás explorar las comunidades en tu región para encontrar la K0munidad que mejor se adapte a tus necesidades.</p>
             </div>
             <div class="col-md-6">
-                <img src="https://1.bp.blogspot.com/-5c0p5zBzg8k/X58RwP5r1zI/AAAAAAAAALQ/rQDIGN60NqwCTGuv0rAEzBLMue5TdCcMgCNcBGAsYHQ/s1330/Ins.jpg" alt="Imagen representativa" class="img-fluid rounded">
+                <img src="https://1.bp.blogspot.com/-5c0p5zBzg8k/X58RwP5r1zI/AAAAAAAAALQ/rQDIGN60NqwCTGuv0rAEzBLMue5TdCcMgCNcBGAsYHQ/s1330/Ins.jpg" alt="Imagen representativa" style="max-width: 100%; height: auto;" class="img-fluid rounded mt-3">
             </div>
         </div>
     </div>
