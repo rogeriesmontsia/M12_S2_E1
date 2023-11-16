@@ -20,29 +20,48 @@ $community = $communityController->getCommunityById($communityId);
 
 // Verificar si se encontró la comunidad
 if (!$community) {
-    // Manejar el caso en el que no se encuentra la comunidad
     echo "Comunidad no encontrada.";
     exit;
-}
+} elseif (!empty($_SESSION['username'])) {
+
 ?>
+    <!DOCTYPE html>
+    <html lang="es">
 
-<!DOCTYPE html>
-<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?= $community['name'] ?></title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $community['name'] ?></title>
-</head>
+    <body>
+        <div class="container">
+            <h1><?= $community['name'] ?></h1>
+            <p><?= $community['description'] ?></p>
+            <p>Comunidad Autónoma: <?= $community['region'] ?></p>
+        </div>
+    </body>
 
-<body>
-    <div class="container">
-        <!-- Contenido de la página -->
-        <h1><?= $community['name'] ?></h1>
-        <p><?= $community['description'] ?></p>
-        <p>Comunidad Autónoma: <?= $community['region'] ?></p>
-    </div>
-</body>
+    </html>
+<?php
+} else {
+?>
+    <!DOCTYPE html>
+    <html lang="es">
 
-</html>
-<?php include('./footer/footer.php');
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+        <div class="container mt-3 w-50">
+            <div class="alert alert-danger" role="alert">
+                Para acceder <a href="./sign_up.php" class="alert-link">regístrate</a> o <a href="./sign_in.php" class="alert-link">inicia sesión</a>
+            </div>
+        </div>
+    <?php
+}
+include('./footer/footer.php');
+
+    ?>
