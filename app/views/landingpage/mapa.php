@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<head><script src="./mapa.js"></script></head>
 <!--
 	Dopetrope 2.5 by HTML5 UP
 	html5up.net | @n33co
@@ -76,4 +77,3 @@
 
 <!-- FIN MODEL -->
 
-<script src="mapa.js"></script>
