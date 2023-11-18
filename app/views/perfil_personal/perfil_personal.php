@@ -1,23 +1,13 @@
 <?php
-include('../../models/Database.php'); // Reemplaza con la ruta correcta
+require_once '../../models/User.php';
 
-// Crear una instancia de la clase Database
-$database = new Database();
+$userObj = new User();
+$user = $userObj->view_user_info();
 
-// Intentar la conexión a la base de datos
-$conn = $database->connect();
-
-if ($conn) {
-    // Consulta para obtener los datos del usuario con ID 1
-    $query = "SELECT * FROM users WHERE id_user = 1";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-
-    // Obtener los resultados como un arreglo asociativo
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Cerrar la conexión
-    $conn = null;
+if (!$user) {
+    // Si el usuario no está logueado, redirige al formulario de login
+    header('Location: ../sign_in.php');
+    exit;
 }
 ?>
 
@@ -29,6 +19,30 @@ if ($conn) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="perfilpersonal.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            max-width: 400px; /* Ajusta el ancho máximo según tus necesidades */
+            margin: auto;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,7 +50,7 @@ if ($conn) {
     <div class="container">
         <div class="profile-container">
             <div class="user-info-left">
-                <img class="user-image" src="<?php echo ($user['profile_image'] ? $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage">
+            <img class="user-image" src="<?php echo ($user['profile_image'] ? 'perfil_images/' . $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage">
             </div>
             <div class="user-info-right">
                 <h1 class="user-name"><?php echo $user['username']; ?></h1>
@@ -45,7 +59,6 @@ if ($conn) {
                 <p class="post-count">2 publicaciones</p>
                 <a href="editar_perfil.php"><button class="edit-button">Editar Perfil</button> </a>
             </div>
-
         </div>
 
         <!-- Contenedor de las publicaciones -->
@@ -83,7 +96,6 @@ if ($conn) {
     </div>
 
     <script>
-        // Función para abrir el modal
         function openModal(imageSrc, likes, comments) {
             var modal = document.getElementById("myModal");
             var modalImage = document.getElementById("modalImage");
@@ -91,19 +103,16 @@ if ($conn) {
             var modalComments = document.getElementById("modalComments");
             var editPostButton = document.getElementById("editPostButton");
 
-            modal.style.display = "block";
             modalImage.src = imageSrc;
             modalLikes.textContent = likes;
             modalComments.textContent = comments;
 
-            // Agrega tu lógica de edición de publicación aquí.
-            editPostButton.onclick = function() {
-                // Agrega tu lógica de edición de publicación aquí.
+            editPostButton.onclick = function () {
+                // Lógica de edición de publicación
             };
         }
 
-        // Cierra el modal al hacer clic fuera de él
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             var modal = document.getElementById("myModal");
             if (event.target === modal) {
                 modal.style.display = "none";
