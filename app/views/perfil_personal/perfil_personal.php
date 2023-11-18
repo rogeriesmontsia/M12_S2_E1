@@ -50,7 +50,7 @@ if (!$user) {
     <div class="container">
         <div class="profile-container">
             <div class="user-info-left">
-                <img class="user-image" src="<?php echo ($user['profile_image'] ? $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage">
+            <img class="user-image" src="<?php echo ($user['profile_image'] ? 'perfil_images/' . $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage">
             </div>
             <div class="user-info-right">
                 <h1 class="user-name"><?php echo $user['username']; ?></h1>

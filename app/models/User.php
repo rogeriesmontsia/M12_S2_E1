@@ -123,7 +123,7 @@ class User
     }
 
 
-    public function edit_profile($newFirstName, $newLastName, $newUsername, $newEmail, $newTelephone)
+    public function edit_profile($newFirstName, $newLastName, $newUsername, $newCity, $newEmail, $newTelephone)
     {
         try {
             // Obtener los datos del usuario
@@ -138,6 +138,7 @@ class User
                 $newFirstName === $user['firstname'] &&
                 $newLastName === $user['lastname'] &&
                 $newUsername === $user['username'] &&
+                $newCity === $user['city'] &&
                 $newEmail === $user['email'] &&
                 $newTelephone === $user['telephone']
             ) {
@@ -149,6 +150,7 @@ class User
                 firstname = :firstname,
                 lastname = :lastname,
                 username = :username,
+                city = :city,
                 email = :email,
                 telephone = :telephone
             WHERE id_user = :user_id";
@@ -158,6 +160,7 @@ class User
             $stmt->bindParam(':firstname', $newFirstName);
             $stmt->bindParam(':lastname', $newLastName);
             $stmt->bindParam(':username', $newUsername);
+            $stmt->bindParam(':city', $newCity);
             $stmt->bindParam(':email', $newEmail);
             $stmt->bindParam(':telephone', $newTelephone);
             $stmt->bindParam(':user_id', $user['id_user']);
@@ -177,15 +180,115 @@ class User
         }
     }
 
-    public function changeImage($userId, $newImagePath)
+    public function changeImage($userId, $newImageName)
     {
-        $query = "UPDATE users SET profile_image = :newImagePath WHERE id_user = :userId";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':newImagePath', $newImagePath);
-        $stmt->bindParam(':userId', $userId);
+        try {
+            // Actualizar la ruta de la imagen en la base de datos
+            $query = "UPDATE users SET profile_image = :newImageName WHERE id_user = :userId";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':newImageName', $newImageName);
+            $stmt->bindParam(':userId', $userId);
 
-        return $stmt->execute();
+            return $stmt->execute();
+        } catch (Exception $e) {
+            // Manejar la excepción (puedes personalizar esto según tus necesidades)
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
+
+    public function deleteImage()
+    {
+        try {
+            // Obtener los datos del usuario
+            $user = $this->view_user_info();
+
+            if (!$user) {
+                return 'El usuario no está logueado.'; // No se pudo obtener la información del usuario
+            }
+
+            // Verificar si el usuario ya tiene una imagen para eliminar
+            if (empty($user['profile_image'])) {
+                return 'No hay ninguna imagen para eliminar.';
+            }
+
+            // Eliminar el archivo de imagen del servido
+            $imagePath = '../views/perfil_personal/perfil_images/' . $user['profile_image'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+
+            // Establecer el campo profile_image en null en la base de datos
+            $query = "UPDATE users SET profile_image = null WHERE id_user = :user_id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':user_id', $user['id_user']);
+
+            // Ejecutar la actualización
+            $stmt->execute();
+
+            // Verificar si se realizó la actualización correctamente
+            if ($stmt->rowCount() > 0) {
+                return true; // Eliminación exitosa
+            } else {
+                return 'Error al eliminar la imagen en la base de datos.';
+            }
+        } catch (Exception $e) {
+            // Devolver el mensaje de error
+            return 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function changePassword($currentPassword, $newPassword, $confirmPassword)
+{
+    try {
+        // Obtener los datos del usuario
+        $user = $this->view_user_info();
+
+        if (!$user) {
+            return 'El usuario no está logueado.'; // No se pudo obtener la información del usuario
+        }
+
+        // Verificar si la contraseña actual coincide
+        $currentPasswordFromDB = $user['password'];
+        if (!password_verify(trim($currentPassword), $currentPasswordFromDB)) {
+            // Antes de llamar a password_verify
+            echo "Contraseña actual proporcionada: " . $currentPassword;
+            echo "Contraseña almacenada en la base de datos: " . $currentPasswordFromDB;
+            return 'La contraseña actual es incorrecta.';
+        }
+
+        // Verificar si la nueva contraseña y su confirmación coinciden
+        if ($newPassword !== $confirmPassword) {
+            return 'La nueva contraseña y la confirmación no coinciden.';
+        }
+
+        // Encriptar la nueva contraseña con bcrypt
+        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+
+        // Actualizar la contraseña en la base de datos
+        $query = "UPDATE users SET password = :newPassword WHERE id_user = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':newPassword', $hashedPassword);
+        $stmt->bindParam(':user_id', $user['id_user']);
+
+        // Ejecutar la actualización
+        $stmt->execute();
+
+        // Verificar si se realizó la actualización correctamente
+        if ($stmt->rowCount() > 0) {
+            return true; // Cambio de contraseña exitoso
+        } else {
+            return 'Error al cambiar la contraseña en la base de datos.';
+        }
+    } catch (Exception $e) {
+        // Devolver el mensaje de error
+        return 'Error: ' . $e->getMessage();
+    }
+}
+
+
+
+
 
 
 

@@ -18,11 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newFirstName = $_POST['newFirstName'];
         $newLastName = $_POST['newLastName'];
         $newUsername = $_POST['newNickname'];
+        $newCity = $_POST['newCity'];
         $newEmail = $_POST['newEmail'];
         $newTelephone = $_POST['newPhone'];
 
         // Llamar a la función para editar el perfil
-        $result = $userObj->edit_profile($newFirstName, $newLastName, $newUsername, $newEmail, $newTelephone);
+        $result = $userObj->edit_profile($newFirstName, $newLastName, $newUsername, $newCity, $newEmail, $newTelephone);
 
         if ($result === true) {
             // Redirigir a la página de perfil con un mensaje de éxito
@@ -40,4 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: perfil_personal.php');
     exit;
 }
+
 ?>

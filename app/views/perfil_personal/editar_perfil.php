@@ -25,7 +25,7 @@ if (!$user) {
     <?php include('../header/header.php'); ?>
     <div class="profile-container">
         <div id="containerImage" class="user-info-left">
-            <img class="user-image" src="<?php echo ($user['profile_image'] ? $user['profile_image'] : './perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage">
+            <img class="user-image" src="<?php echo ($user['profile_image'] ? 'perfil_images/' . $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage"> 
             <button class="change-image-button" id="changeImageButton">Cambiar Imagen</button>
         </div>
         <div class="user-info-right">
@@ -33,12 +33,19 @@ if (!$user) {
             <form method="post" action="actionEditProfile.php">
                 <label for="newFirstName">Nombre:</label>
                 <input type="text" id="newFirstName" name="newFirstName" value="<?php echo $user['firstname']; ?>">
+                
                 <label for="newLastName">Apellido:</label>
                 <input type="text" id="newLastName" name="newLastName" value="<?php echo $user['lastname']; ?>">
+                
                 <label for="newNickname">Nickname:</label>
                 <input type="text" id="newNickname" name="newNickname" value="<?php echo $user['username']; ?>">
+                
+                <label for="newCity">Ciudad:</label>
+                <input type="text" id="newCity" name="newCity" value="<?php echo $user['city']; ?>">
+                
                 <label for="newEmail">Correo Electrónico:</label>
                 <input type="email" id="newEmail" name="newEmail" value="<?php echo $user['email']; ?>">
+                
                 <label for="newPhone">Teléfono:</label>
                 <input type="tel" id="newPhone" name="newPhone" value="<?php echo $user['telephone']; ?>">
                 <div class="button-group">
@@ -73,7 +80,7 @@ if (!$user) {
         <div class="modal-content">
             <span class="close" style="float: right;">&times;</span>
             <h2>Cambiar contraseña</h2>
-            <form id="passwordForm">
+            <form id="passwordForm" action="actionChangePassword.php" method="post">
                 <div class="form-group">
                     <label for="currentPassword">Contraseña actual:</label>
                     <input type="password" class="form-control" id="currentPassword" name="currentPassword">
@@ -86,7 +93,7 @@ if (!$user) {
                     <label for="confirmPassword">Confirmar nueva contraseña:</label>
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
                 </div>
-                <button type="button" class="btn btn-success" onclick="changePassword()">Cambiar Contraseña</button>
+                <button type="submit" class="btn btn-success">Cambiar Contraseña</button>
             </form>
         </div>
     </div>
@@ -97,6 +104,7 @@ if (!$user) {
         <?php include('../footer/footer.php'); ?>
     </footer>
     <script src="perfil.js"></script>
+    
     <style>
         /* Estilos generales */
         body {
