@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,7 @@
         include './header/header.php';
     ?>
     <div class = "container">
-        <form class="p-5" action = "../controllers/ProductControler.php" method="POST" >
+        <form class="p-5" action = "../controllers/PostControler.php" method="POST" >
             <div class="mb-4">
                 <label for="title">Titol</label>
                 <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el teu nom">
@@ -36,6 +39,13 @@
             </div><br>
                     
             <div>
+                <input value = "1" name = "id_user" type = "hidden">
+                <input value = "15" name = "id_community" type = "hidden">
+                <input value = "post" name = "category" type = "hidden">
+
+
+            </div>
+            <div>
                 <button type="submit" class="boto" >Enviar</button>
             </div>
         </form>
@@ -45,6 +55,6 @@
         include './footer/footer.php';
     ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src = "./header/js/dropbox.js"> </script>
+        <script src = "../js/dropbox.js"> </script>
 </body>
 </html>

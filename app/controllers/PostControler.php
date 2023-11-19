@@ -1,7 +1,7 @@
 <?php 
 require_once '../models/PostModel.php';
 
-class PostControl {
+class PostController {
     
 
     private $postModel;
@@ -45,6 +45,28 @@ class PostControl {
         echo json_encode($adv);
     }
 
+    public function guardarPost ($user, $commu, $title, $descript, $category) {
+        $exito = $this->postModel->setAllPost($user, $commu, $title, $descript, $category);
+
+        if ($exito) {
+            echo "Información guardada correctamente.";
+        } else {
+            echo "Error al guardar la información.";
+        }
+    }
 }
+
+$controller = new PostController ();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = $_POST['title'];
+    $category = $_POST['category'];
+    $descript = $_POST['description'];
+    $user = $_POST['id_user'];
+    $commu = $_POST['id_community'];
+
+    $controller->guardarPost($user, $commu, $title, $descript, $category);
+}
+
 
 ?>

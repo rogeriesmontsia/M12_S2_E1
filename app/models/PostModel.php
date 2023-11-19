@@ -84,6 +84,13 @@ class PostModel {
         }
     }
 
+    public function setAllPost($user, $commu, $title, $descript, $category) {
+        $sql = "INSERT INTO `posts`(`id_user`,`id_community`,`title`, `description`, `category`)
+                VALUES ($user, $commu, '$title', '$descript', '$category')";  
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+      
+    }
 }
 
 
