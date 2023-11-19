@@ -46,17 +46,30 @@ class PostController {
     }
 
     public function guardarPost ($user, $commu, $title, $descript, $category) {
-        $exito = $this->postModel->setAllPost($user, $commu, $title, $descript, $category);
-
-        if ($exito) {
-            echo "Información guardada correctamente.";
-        } else {
-            echo "Error al guardar la información.";
+        try {
+             $exito = $this->postModel->setAllPost($user, $commu, $title, $descript, $category);
+        } catch (PDOException $e) {
+            throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
         }
+       
+    }
+
+    public function guardarImagenes ($idPost, $ruta) {
+        try {
+            $exito = $this->postModel->setImagePost($idPost, $ruta);
+            header("Location: ../views/form_post.php?creat=ok");
+        } catch (PDOException $e) {
+            throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
+        } 
+    }
+
+    public function ultim() {
+        return $this->postModel->ultimAfegit();
     }
 }
 
 $controller = new PostController ();
+$targetDir = "../imatges/"; //directori de les imatges
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
@@ -64,25 +77,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descript = $_POST['description'];
     $user = $_POST['id_user'];
     $commu = $_POST['id_community'];
+    $files = $_FILES['postImage']['name'];
 
     $controller->guardarPost($user, $commu, $title, $descript, $category);
+    $ruta = $targetDir.$files;
+    $idPost = $controller->ultim();
+    $controller->guardarImagenes($idPost, $files);
 
-    $targetDir = "../imatges/";
-
-    // Recorre todos los archivos subidos
-    foreach ($_FILES["file"]["name"] as $key => $fileName) {
-        
-        // Generar un nuevo nombre de archivo único
-        $nuevoNombre = uniqid() . $fileName;
-        
-        $rutaDestino = $targetDir. $nuevoNombre;
-        
-        if (move_uploaded_file($archivoTemporal, $rutaDestino)) {
-            echo "Archivo movido con éxito a " . $rutaDestino;
-        } else {
-            echo "Hubo un error al mover el archivo.";
-        } 
-    }
 }
 
 

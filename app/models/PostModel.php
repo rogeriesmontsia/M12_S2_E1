@@ -89,7 +89,18 @@ class PostModel {
                 VALUES ($user, $commu, '$title', '$descript', '$category')";  
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-      
+    }
+
+    public function setImagePost($Postid, $nom) {
+        $sql = "INSERT INTO `imagePost`(`id_post`,`nom`,`portada`) 
+                VALUES ($Postid, '$nom',1)";  
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+    }
+
+    public function ultimAfegit() {
+        $ultim = $this->conn->lastInsertId();
+        return $ultim;
     }
 }
 

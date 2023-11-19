@@ -1,6 +1,6 @@
 // Configura la Dropzone
-Dropzone.options.myDropzone = {
-    paramName: "file", // Nombre del campo que se enviará al servidor
+Dropzone.options.dropzone = {
+    paramName: 'postImage', // Nombre del campo que se enviará al servidor
     maxFilesize: 5, // Tamaño máximo del archivo en MB
     acceptedFiles: ".jpg, .jpeg, .png", // Tipos de archivos permitidos
     dictDefaultMessage: "Arrastra y suelta archivos aquí o haz clic para seleccionar",
