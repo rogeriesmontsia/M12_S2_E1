@@ -2,9 +2,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('products-container');
     const paginationContainer = document.getElementById('pagination-container');
-    const itemsPerPage = 1;
+    const itemsPerPage = 6;
 
-    fetch('http://localhost:8000/controllers/jsonPostImage.php')
+    fetch('http://localhost:8000/controllers/jsonAdvImage.php')
         .then(response => response.json())
         .then(data => {
             // Mostrar la primera página
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   // Crear la paginación
+    // Crear la paginación
     function createPagination(data) {
         const totalPages = Math.ceil(data.length / itemsPerPage);
         const paginationContainer = document.getElementById('pagination-container');

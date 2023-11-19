@@ -21,38 +21,20 @@
 
       <!--Section: Content-->
       <section>
-        <section id="products-container" class = "row my-5" ></section>
+        <section id="products-container" class = "row my-5 mx-2" ></section>
 
         
 
         <div id="pagination-container"></div>      
       </section>
 
-      <!-- Pagination -->
-      <nav class="my-4" aria-label="...">
-        <ul class="pagination pagination-circle justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </main>
   <!--Main layout-->
 
     <?php
         include './footer/footer.php';
     ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../js/communityAllPost.js"></script>
+        <script src="../js/communityAllAdv.js"></script>
 
 </body>
 </html>
