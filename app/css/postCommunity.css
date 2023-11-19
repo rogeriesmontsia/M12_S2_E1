@@ -272,3 +272,13 @@ Template sidebar
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .card {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+}
+
+.card img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

@@ -4,23 +4,47 @@ require_once '../models/PostModel.php';
 class PostControl {
     
 
-    private $postControl;
+    private $postModel;
 
     public function __construct() {
-        $this->postControl = new PostModel();
+        $this->postModel = new PostModel();
     }
 
     //Entre $productId que es el id del producte 
     // $nimatge el nom de la imatge que es solicita
-    public function mostrarTitol($productId) {
-        $preu = $this->postControl->obtenirTitle($productId);
-        return $preu[0]["title"]; //sols tindra un resultat
+    public function mostrarTitol($postId) {
+        $title = $this->postModel->getTitle($postId);
+        return $title[0]["title"]; //sols tindra un resultat
     }
 
-    public function mostrarDescripcio($productId) {
-        $nom = $this->postControl->obtenirDescripcio($productId);
-        return $nom[0]["description"]; //sols tindra un resultat
+    public function mostrarDescripcio($postId) {
+        $descr = $this->postModel->getDescripcio($postId);
+        return $descr[0]["description"]; //sols tindra un resultat
     }
+
+    public function mostrarPosts ($postId) {
+        $tots = $this->postModel->getTots($postId);
+        return $tots;
+
+    }
+
+    public function mostrarAdvertisements ($postId) {
+        $nom = $this->postModel->getTots($postId);
+        return $nom;
+    }
+
+    public function llistatPostImagens () {
+        $post = $this->postModel->getPostImagens();
+        header('Content-Type: application/json');
+        echo json_encode($post);
+    }
+
+    public function llistatAdvImagens () {
+        $adv = $this->postModel->getAdvImagens();
+        header('Content-Type: application/json');
+        echo json_encode($adv);
+    }
+
 }
 
 ?>
