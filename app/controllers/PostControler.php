@@ -13,31 +13,36 @@ class PostControl {
     //Entre $productId que es el id del producte 
     // $nimatge el nom de la imatge que es solicita
     public function mostrarTitol($postId) {
-        $title = $this->postModel->obtenirTitle($postId);
+        $title = $this->postModel->getTitle($postId);
         return $title[0]["title"]; //sols tindra un resultat
     }
 
     public function mostrarDescripcio($postId) {
-        $descr = $this->postModel->obtenirDescripcio($postId);
+        $descr = $this->postModel->getDescripcio($postId);
         return $descr[0]["description"]; //sols tindra un resultat
     }
 
     public function mostrarPosts ($postId) {
-        $tots = $this->postModel->obtenirTots($postId);
-
+        $tots = $this->postModel->getTots($postId);
+        return $tots;
 
     }
 
     public function mostrarAdvertisements ($postId) {
-        $nom = $this->postModel->obtenirTots($postId);
-
+        $nom = $this->postModel->getTots($postId);
+        return $nom;
     }
 
     public function llistatPostImagens () {
-        $post = $this->postModel->obtenirPostImagens();
-        $jsonP =  json_encode($post);
+        $post = $this->postModel->getPostImagens();
         header('Content-Type: application/json');
-        echo $jsonP;
+        echo json_encode($post);
+    }
+
+    public function llistatAdvImagens () {
+        $adv = $this->postModel->getAdvImagens();
+        header('Content-Type: application/json');
+        echo json_encode($adv);
     }
 
 }
