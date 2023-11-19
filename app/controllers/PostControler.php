@@ -1,5 +1,6 @@
 <?php 
 require_once '../models/PostModel.php';
+define("RUTA", "../imatges/");
 
 class PostController {
     
@@ -65,6 +66,13 @@ class PostController {
 
     public function ultim() {
         return $this->postModel->ultimAfegit();
+    }
+
+    //Entre $productId que es el id del producte 
+    // $nimatge el nom de la imatge que es solicita
+    public function mostrarImagen($postId, $nimatge) {
+        $rutaImagen = $this->postModel->obtenerNomImagens($postId);
+        return (RUTA.$rutaImagen[$nimatge]["nom"]);
     }
 }
 

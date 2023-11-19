@@ -102,6 +102,21 @@ class PostModel {
         $ultim = $this->conn->lastInsertId();
         return $ultim;
     }
+
+    public function obtenerNomImagens($postId) {
+        $sql = "SELECT nom FROM imagePost WHERE id_post = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $postId);
+        $stmt->execute();
+
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if ($resultado) {
+            return $resultado;
+        } else {
+            return null;
+        }
+    }
 }
 
 
