@@ -16,9 +16,12 @@
 <body>
     <?php 
         include './header/header.php';
+        if (isset($_GET['creat'])){
+            echo "S'ha creat correctament el post";
+        }
     ?>
     <div class = "container">
-        <form class="p-5" action = "../controllers/PostControler.php" method="POST" >
+        <form class="p-5" action = "../controllers/PostControler.php" method="POST" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="title">Titol</label>
                 <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el teu nom">
@@ -29,26 +32,22 @@
                 <textarea class="form-control" id="descripcion" name = "description" rows="3" placeholder="Escribe una descripción"></textarea>
             </div>
 
-            <div id="dropzone">
-                <p>Arrastra y suelta tus archivos aquí</p>
-                <input type="file" id="fileInput" name = "imatges[]" multiple style="display: none;" enctype="multipart/form-data">
-                <table id="file-table" name = "images" class = "table">
-                    <tr id="row-1"></tr>
-                    <tr id="row-2"></tr>
-                </table>
-            </div><br>
-                    
+            <div >
+                <label for="foto">Selecciona una foto:</label>
+                <input type="file" name="postImage" accept="image/*"  multiple required>
+            </div>
+          
             <div>
                 <input value = "1" name = "id_user" type = "hidden">
                 <input value = "15" name = "id_community" type = "hidden">
                 <input value = "post" name = "category" type = "hidden">
-
-
             </div>
             <div>
                 <button type="submit" class="boto" >Enviar</button>
             </div>
         </form>
+
+
     </div><br>
 
     <?php

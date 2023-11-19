@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Agregar la columna al contenedor de la fila
             col.appendChild(productElement);
             row.appendChild(col);
-         });
+        });
     // Agregar la fila al contenedor principal
     productsContainer.appendChild(row);
     }

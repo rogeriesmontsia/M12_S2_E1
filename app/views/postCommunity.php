@@ -1,9 +1,7 @@
 <?php 
         require_once './header/header.php';
         require_once "../controllers/PostControler.php";
-        require_once "../controllers/ImaPostControl.php";
-        $vistaP = new PostControl();
-        $imagP = new ImaPostControl();
+        $vistaP = new PostController();
         $postId = $_GET["postId"];
 ?>
 
@@ -25,7 +23,7 @@
         <div class="col-md-9 mb40 my-4">
             <article>
                 <?php
-                    echo '<img class="img-fluid mb30" src="'. $imagP->mostrarImagen($postId,0). ' " alt="..." />';
+                    echo '<img class="img-fluid mb30" src="'. $vistaP->mostrarImagen($postId,0). ' " alt="..." />';
                 ?>
                 <div class="post-content">
                     <h3>

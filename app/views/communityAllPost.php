@@ -1,9 +1,7 @@
 <?php 
         require_once './header/header.php';
         require_once "../controllers/PostControler.php";
-        require_once "../controllers/ImaPostControl.php";
-        $vistaP = new PostControl();
-        $imagP = new ImaPostControl();
+        $vistaP = new PostController();
 ?>
 
 <!DOCTYPE html>

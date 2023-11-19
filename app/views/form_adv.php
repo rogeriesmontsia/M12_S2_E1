@@ -45,12 +45,13 @@
                 <button type="submit" class="boto" >Enviar</button>
             </div>
         </form>
+        
     </div><br>
 
     <?php
         include './footer/footer.php';
     ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src = "../js/dropbox.js"> </script>
+        <script src = "../js/dropzone.js"> </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php 
 require_once '../models/PostModel.php';
+define("RUTA", "../imatges/");
 
 class PostController {
     
@@ -46,17 +47,37 @@ class PostController {
     }
 
     public function guardarPost ($user, $commu, $title, $descript, $category) {
-        $exito = $this->postModel->setAllPost($user, $commu, $title, $descript, $category);
-
-        if ($exito) {
-            echo "Información guardada correctamente.";
-        } else {
-            echo "Error al guardar la información.";
+        try {
+             $exito = $this->postModel->setAllPost($user, $commu, $title, $descript, $category);
+        } catch (PDOException $e) {
+            throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
         }
+       
+    }
+
+    public function guardarImagenes ($idPost, $ruta) {
+        try {
+            $exito = $this->postModel->setImagePost($idPost, $ruta);
+            header("Location: ../views/form_post.php?creat=ok");
+        } catch (PDOException $e) {
+            throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
+        } 
+    }
+
+    public function ultim() {
+        return $this->postModel->ultimAfegit();
+    }
+
+    //Entre $productId que es el id del producte 
+    // $nimatge el nom de la imatge que es solicita
+    public function mostrarImagen($postId, $nimatge) {
+        $rutaImagen = $this->postModel->obtenerNomImagens($postId);
+        return (RUTA.$rutaImagen[$nimatge]["nom"]);
     }
 }
 
 $controller = new PostController ();
+$targetDir = "../imatges/"; //directori de les imatges
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
@@ -64,8 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descript = $_POST['description'];
     $user = $_POST['id_user'];
     $commu = $_POST['id_community'];
+    $files = $_FILES['postImage']['name'];
 
     $controller->guardarPost($user, $commu, $title, $descript, $category);
+    $ruta = $targetDir.$files;
+    $idPost = $controller->ultim();
+    $controller->guardarImagenes($idPost, $files);
+
 }
 
 

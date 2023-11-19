@@ -15,7 +15,7 @@
         require_once './header/header.php';
         require_once "../controllers/PostControler.php";
         require_once "../controllers/ImaPostControl.php";
-        $vistaP = new PostControl();
+        $vistaP = new PostController();
         $imagP = new ImaPostControl();
     ?>
     <section class = "container flex justify-content-center my-4" >
