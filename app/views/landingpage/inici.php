@@ -7,7 +7,7 @@
             </p>
         </div>
         <div class="col-md-6 my-5">
-            <img src="logo.png" alt="Logo" style="max-width: 45%; height: auto;" class="mt-3 2">
+            <img src="views/landingpage/logo.png" alt="Logo" style="max-width: 45%; height: auto;" class="mt-3 2">
         </div>
     </div>
 </div>

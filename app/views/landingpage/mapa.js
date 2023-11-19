@@ -1,14 +1,14 @@
 let datosProcesados = [];
 console.log("Cargando datos y eventos...");
 
-// Cargar datos y configurar eventos al cargar la página
 window.onload = function () {
     cargarDatosYEventos();
 };
 
 function obtenerDatosComunidad(id) {
-    // Buscar la comunidad autónoma por el código, ignorando la tilde
-    const comunidadAutonoma = datosProcesados.find(comunidad => comunidad.code === id || comunidad.label.normalize("NFD").replace(/[\u0300-\u036f]/g, "") === id);
+    const comunidadAutonoma = datosProcesados.find(comunidad =>
+        comunidad.code === id || comunidad.label.normalize("NFD").replace(/[\u0300-\u036f]/g, "") === id
+    );
 
     if (comunidadAutonoma) {
         return comunidadAutonoma;
@@ -19,14 +19,12 @@ function obtenerDatosComunidad(id) {
 }
 
 function cargarDatosYEventos() {
-    fetch('arbol.json')
+    fetch('views/landingpage/arbol.json')
         .then(response => response.json())
         .then(data => {
-            // Procesar los datos y almacenarlos en la variable global
             datosProcesados = data;
             console.log("Datos cargados:", datosProcesados);
 
-            // Configurar el evento click para el SVG después de cargar los datos
             const tuSVG = document.getElementById("tuSVG");
             if (tuSVG) {
                 tuSVG.addEventListener("click", function (event) {
@@ -35,7 +33,6 @@ function cargarDatosYEventos() {
                         const pathId = path.getAttribute("id");
                         const comunidadAutonoma = obtenerDatosComunidad(pathId);
 
-                        // Verificar si comunidadAutonoma tiene un valor antes de llamar a abrirModal
                         if (comunidadAutonoma) {
                             abrirModal(comunidadAutonoma);
                         } else {
@@ -73,74 +70,76 @@ function abrirModal(comunidadAutonoma) {
     const modal = new bootstrap.Modal(document.getElementById("miModal"));
     modalTitulo.textContent = comunidadAutonoma.label;
 
-    // Mostrar las provincias inicialmente
     mostrarProvincias(comunidadAutonoma);
 
     modal.show();
 }
 
 function mostrarProvincias(comunidadAutonoma) {
-  const modalLista = document.getElementById("modalLista");
+    const modalLista = document.getElementById("modalLista");
 
-  if (!modalLista) {
-      console.error("Error: No se encontró la lista de provincias.");
-      return;
-  }
+    if (!modalLista) {
+        console.error("Error: No se encontró la lista de provincias.");
+        return;
+    }
 
-  if (comunidadAutonoma.provinces) {
-      modalLista.innerHTML = comunidadAutonoma.provinces.map(provincia =>
-          `<li class="list-group-item provincia" data-provincia='${provincia.label}'>${provincia.label}</li>`
-      ).join('');
+    if (comunidadAutonoma.provinces) {
+        modalLista.innerHTML = comunidadAutonoma.provinces.map(provincia =>
+            `<li class="list-group-item provincia" data-provincia='${provincia.label}'>${provincia.label}</li>`
+        ).join('');
 
-      // Agregar evento clic a los elementos de clase 'provincia'
-      const provinciasItems = document.querySelectorAll('.provincia');
-      provinciasItems.forEach(item => {
-          item.addEventListener('click', function () {
-              const provinciaLabel = this.getAttribute('data-provincia');
-              mostrarPoblaciones(provinciaLabel);
-          });
-      });
-  } else {
-      modalLista.innerHTML = "No hay información de provincias.";
-  }
+        const provinciasItems = document.querySelectorAll('.provincia');
+        provinciasItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const provinciaLabel = this.getAttribute('data-provincia');
+                consultarComunidadesPorNombre(provinciaLabel);
+            });
+        });
+    } else {
+        modalLista.innerHTML = "No hay información de provincias.";
+    }
 }
 
-function mostrarPoblaciones(provincia) {
-  const modalLista = document.getElementById("modalLista");
-
-  if (!modalLista) {
-      console.error("Error: No se encontró la lista de poblaciones.");
-      return;
-  }
-
-  let poblaciones;
-  try {
-      poblaciones = JSON.parse(provincia.towns);
-  } catch (error) {
-      console.error("Error al analizar la cadena JSON:", error);
-      return;
-  }
-
-  // Verificar si la provincia tiene poblaciones
-  if (poblaciones) {
-      modalLista.innerHTML = poblaciones.map(poblacion =>
-          `<li class="list-group-item">${poblacion.label}</li>`
-      ).join('');
-  } else {
-      modalLista.innerHTML = "No hay información de poblaciones para esta provincia.";
-  }
+function consultarComunidadesPorNombre(comarcaName) {
+    fetch('mapa.php?action=getCommunityByName', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ comarca_name: comarcaName }),
+    })
+    .then(response => response.json())
+    .then(data => mostrarComunidades(data))
+    .catch(error => console.error('Error al consultar comunidades por nombre:', error));
 }
 
+function mostrarComunidades(comunidades) {
+    const modalLista = document.getElementById("modalLista");
 
-function cerrarModal() {
-  const modalElement = document.getElementById("miModal");
-  const modal = new bootstrap.Modal(modalElement);
+    if (!modalLista) {
+        console.error("Error: No se encontró la lista de comunidades.");
+        return;
+    }
 
-  modal.hide();
+    try {
+        const jsonData = JSON.parse(comunidades);
 
-  // Esperar a que se oculte el modal antes de limpiar
-  modalElement.addEventListener('hidden.bs.modal', function () {
-    modal.dispose();
-    document.querySelector('.modal-backdrop').remove();
-  });
+        if (jsonData.error) {
+            // Mostrar el error en lugar de los datos
+            console.error('Error al consultar comunidades por nombre:', jsonData.error);
+            modalLista.innerHTML = "Error al consultar comunidades por nombre.";
+        } else if (Array.isArray(jsonData)) {
+            console.log("Mostrando comunidades:", jsonData);
+            modalLista.innerHTML = jsonData.map(comunidad =>
+                `<li class="list-group-item">${comunidad}</li>`
+            ).join('');
+        } else {
+            console.log("No hay información de comunidades para esta comarca.");
+            modalLista.innerHTML = "No hay información de comunidades para esta comarca.";
+        }
+    } catch (error) {
+        // Manejar errores al analizar JSON
+        console.error('Error al analizar la respuesta JSON:', error);
+        modalLista.innerHTML = "Error al analizar la respuesta JSON.";
+    }
 }

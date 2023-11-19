@@ -1,5 +1,6 @@
+
+
 <!DOCTYPE html>
-<head><script src="./mapa.js"></script></head>
 <!--
 	Dopetrope 2.5 by HTML5 UP
 	html5up.net | @n33co
@@ -33,9 +34,9 @@
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 
-		
-		
-		
+
+
+
 	</head>
 
 	<container >
@@ -51,7 +52,6 @@
                                 </div>
                                 </div>
 
-    
 <!-- MODAL-->
 
 <div id="miModal" class="modal fade">
@@ -75,5 +75,8 @@
 
 
 
+
 <!-- FIN MODEL -->
 
+
+<script src="views/landingpage/mapa.js"></script>
