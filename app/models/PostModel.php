@@ -57,7 +57,7 @@ class PostModel {
     public function getPostImagens() {
         $sql = "SELECT posts.id_post, posts.title, posts.description, imagePost.nom
                 FROM posts 
-                INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.nom LIKE '%ima1.%' and posts.category = 'post'";  
+                INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.portada = 1 and posts.category = 'post'";  
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -72,7 +72,7 @@ class PostModel {
     public function getAdvImagens() {
         $sql = "SELECT posts.id_post, posts.title, posts.description, imagePost.nom 
                 FROM posts 
-                INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.nom LIKE '%ima1.%' and posts.category = 'adv'";  
+                INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.portada = '1' and posts.category = 'adv'";  
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

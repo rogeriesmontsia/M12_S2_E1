@@ -39,7 +39,7 @@
             </div><br>
                     
             <div>
-                <input value = "1" name = "id_user" type = "hidden">
+                <input value = "<?php  ?>" name = "id_user" type = "hidden">
                 <input value = "15" name = "id_community" type = "hidden">
                 <input value = "post" name = "category" type = "hidden">
 
@@ -49,6 +49,8 @@
                 <button type="submit" class="boto" >Enviar</button>
             </div>
         </form>
+
+
     </div><br>
 
     <?php

@@ -66,6 +66,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $commu = $_POST['id_community'];
 
     $controller->guardarPost($user, $commu, $title, $descript, $category);
+
+    $targetDir = "../imatges/";
+
+    // Recorre todos los archivos subidos
+    foreach ($_FILES["file"]["name"] as $key => $fileName) {
+        
+        // Generar un nuevo nombre de archivo único
+        $nuevoNombre = uniqid() . $fileName;
+        
+        $rutaDestino = $targetDir. $nuevoNombre;
+        
+        if (move_uploaded_file($archivoTemporal, $rutaDestino)) {
+            echo "Archivo movido con éxito a " . $rutaDestino;
+        } else {
+            echo "Hubo un error al mover el archivo.";
+        } 
+    }
 }
 
 
