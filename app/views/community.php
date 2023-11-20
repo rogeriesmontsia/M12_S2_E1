@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 ?>
 <!DOCTYPE html>
