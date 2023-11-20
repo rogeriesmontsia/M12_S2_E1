@@ -24,7 +24,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <?php
                         if ($userRole == 'superAdmin') {
                             echo '<th>Acciones</th><th>Activa</th>';
-                        } else if ($userRole == 'user') {
+                        } else {
                             echo '<th>Unirme a la comunidad</th>';
                         }
                         ?>
@@ -44,7 +44,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                                 echo '<button type="submit" class="btn btn-danger" name="setInactive" value="' . $community['id_community'] . '">Deshabilitar comunidad</button>';
                                 echo '</form>';
                                 echo '<td>' . $community['isActive'] . '</td>';
-                            } else if ($userRole == 'user') {
+                            } else {
                                 $isMember = $communitiesUsersController->isMember($community['id_community'], $_SESSION['id_user']);
 
                                 if ($isMember) {
@@ -85,8 +85,6 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
         <?php
     }
-    include('./footer/footer.php');
-
         ?>
         </div>
         </body>
