@@ -40,9 +40,9 @@ class CommunityController
     public function create()
     {
         try {
-            $nom_comunitat = $_POST['nom_comunitat'];
-            $descripcio = $_POST['descripcio'];
-            $comunitat_autonoma = $_POST['comunitat_autonoma'];
+            $nom_comunitat = htmlspecialchars($_POST['nom_comunitat']);
+            $descripcio = htmlspecialchars($_POST['descripcio']);
+            $comunitat_autonoma = htmlspecialchars($_POST['comunitat_autonoma']);
 
             $this->model->createCommunity($nom_comunitat, $descripcio, $comunitat_autonoma);
 

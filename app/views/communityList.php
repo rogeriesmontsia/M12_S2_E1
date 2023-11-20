@@ -5,7 +5,6 @@ require_once '../controllers/CommunitiesUsersController.php';
 $userRole = $_SESSION['role'];
 ?>
 <?php
-var_dump($_SESSION);
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 ?>
 

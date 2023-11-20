@@ -27,9 +27,9 @@ class UserController
     public function create()
     {
             try {
-                $email = $_POST['email'];
-                $pass = md5($_POST['pass']);
-                $nom = $_POST['nom'];
+                $email = htmlspecialchars($_POST['email']);
+                $pass = htmlspecialchars(md5($_POST['pass']));
+                $nom = htmlspecialchars($_POST['nom']);
 
                 $this->model->createUser($email, $pass, $nom);
 
