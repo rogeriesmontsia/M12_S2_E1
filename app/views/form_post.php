@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $commu = $_GET["id"];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,8 +48,8 @@
             </div>
           
             <div>
-                <input value = "1" name = "id_user" type = "hidden">
-                <input value = "15" name = "id_community" type = "hidden">
+                <input value = "<?$_SESSION['username']?>" name = "id_user" type = "hidden">
+                <input value = "<? $commu ?>" name = "id_community" type = "hidden">
             </div>
             <div>
                 <button type="submit" class="boto" >Enviar</button>
