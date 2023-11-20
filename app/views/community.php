@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+<?php include("./header/header.php");?>
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 ?>
 <!DOCTYPE html>
@@ -10,7 +11,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
     <title>Comunnity</title>
 </head>
 <body>
-    <?php include("./header/header.php");?>
+    
     <div class="d-flex align-items-center justify-content-center" style="height: 300px;" >
     <div class="container text-center">
         <h1>Welcome, <?php $_SESSION["username"]?></h1>
