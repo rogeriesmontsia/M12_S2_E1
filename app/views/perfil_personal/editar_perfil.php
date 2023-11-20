@@ -26,7 +26,7 @@ $user = $userObj->view_user_info();
     <div class="profile-container">
         <div id="containerImage" class="user-info-left">
             <img class="user-image" src="<?php echo ($user['profile_image'] ? 'perfil_images/' . $user['profile_image'] : 'perfil_images/usuarioSinImagen.png'); ?>" alt="Imagen de Usuario" id="userImage"> 
-            <button class="change-image-button" id="changeImageButton">Cambiar Imagen</button>
+            <button class="btn btn-success" id="changeImageButton">Cambiar Imagen</button>
         </div>
         <div class="user-info-right">
             <h1 class="user-name"><?php echo $user['username']; ?></h1>
@@ -49,10 +49,10 @@ $user = $userObj->view_user_info();
                 <label for="newPhone">Teléfono:</label>
                 <input type="tel" id="newPhone" name="newPhone" value="<?php echo $user['telephone']; ?>">
                 <div class="button-group">
-                    <button class="save-button" type="submit" name="save_changes">Guardar Cambios</button>
+                    <button class="btn btn-success" type="submit" name="save_changes">Guardar Cambios</button>
                     <div class="button-container">
-                        <a href="perfil_personal.php"><button type="button" class="cancel-button">Cancelar</button></a>
-                        <button type="button" id="changePasswordButton" class="change-password-button">Cambiar contraseña</button>
+                        <a href="perfil_personal.php"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                        <button type="button" id="changePasswordButton" class="btn btn-primary">Cambiar contraseña</button>
                     </div>
                 </div>
             </form>
