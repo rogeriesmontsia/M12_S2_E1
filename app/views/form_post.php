@@ -32,6 +32,14 @@
                 <textarea class="form-control" id="descripcion" name = "description" rows="3" placeholder="Escribe una descripción"></textarea>
             </div>
 
+            <div>
+                <label>Seleccione el tipus de publicació que vol publicar:</label><br>
+                <input type="radio" id="category1" name="category" value="post">
+                <label for="category">Post</label><br>
+                <input type="radio" id="category2" name="category" value="adv">
+                <label for="category">Advertisements</label><br>
+            </div>
+
             <div >
                 <label for="foto">Selecciona una foto:</label>
                 <input type="file" name="postImage" accept="image/*"  multiple required>
@@ -40,7 +48,6 @@
             <div>
                 <input value = "1" name = "id_user" type = "hidden">
                 <input value = "15" name = "id_community" type = "hidden">
-                <input value = "post" name = "category" type = "hidden">
             </div>
             <div>
                 <button type="submit" class="boto" >Enviar</button>

@@ -8,7 +8,7 @@ services:
     ports:
       - 8000:80
     volumes:
-      - "./app:/var/www/html"
+      - ./app:/var/www/html:rw
 
   mariadb:
     image: mariadb:10.5.2

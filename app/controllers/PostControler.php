@@ -58,11 +58,12 @@ class PostController {
     public function guardarImagenes ($idPost, $ruta) {
         try {
             $exito = $this->postModel->setImagePost($idPost, $ruta);
-            header("Location: ../views/form_post.php?creat=ok");
         } catch (PDOException $e) {
             throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
-        } 
-    }
+        } ?>
+        <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../views/form_post.php?creat=ok">`;
+
+    <?php }
 
     public function ultim() {
         return $this->postModel->ultimAfegit();
@@ -70,14 +71,13 @@ class PostController {
 
     //Entre $productId que es el id del producte 
     // $nimatge el nom de la imatge que es solicita
-    public function mostrarImagen($postId, $nimatge) {
+    public function mostrarImagen($postId) {
         $rutaImagen = $this->postModel->obtenerNomImagens($postId);
-        return (RUTA.$rutaImagen[$nimatge]["nom"]);
+        return (RUTA.$rutaImagen["nom"]);
     }
 }
 
 $controller = new PostController ();
-$targetDir = "../imatges/"; //directori de les imatges
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
@@ -87,10 +87,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $commu = $_POST['id_community'];
     $files = $_FILES['postImage']['name'];
 
-    $controller->guardarPost($user, $commu, $title, $descript, $category);
-    $ruta = $targetDir.$files;
-    $idPost = $controller->ultim();
-    $controller->guardarImagenes($idPost, $files);
+    // Verificar si se ha enviado un archivo
+if ($_FILES['postImage']['error'] == UPLOAD_ERR_OK) {
+    // Verificar el tipo MIME del archivo
+    $allowedTypes = ['image/jpeg', 'image/png'];
+    if (in_array($_FILES['postImage']['type'], $allowedTypes)) {
+        // Obtener información sobre el archivo
+        $controller->guardarPost($user, $commu, $title, $descript, $category);
+        $idPost = $controller->ultim();
+        $nombre = $idPost . "ima." . pathinfo($_FILES['postImage']['name'], PATHINFO_EXTENSION);
+        $ruta = RUTA . $nombre;
+
+        // Mover el archivo temporal al destino deseado
+        if (move_uploaded_file($_FILES['postImage']['tmp_name'], $ruta)) {
+            echo 'Archivo subido correctamente.';
+            $controller->guardarImagenes($idPost, $nombre);
+        } else {
+            echo 'Error al subir el archivo.';
+        }
+    } else {
+        echo 'Tipo de archivo no permitido.';
+    }
+} else {
+    echo 'Error en la carga del archivo. Código de error: ' . $_FILES['postImage']['error'];
+}
+    
 
 }
 
