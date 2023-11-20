@@ -20,12 +20,12 @@
     <?php include("./header/header.php"); ?>
     <?php include("../controllers/LoginController.php"); ?>
 
-    <div class="container-sm">
+    <div class="container">
         <div class="row justify-content-center">
             <h1 class="text-center">Login</h1>
         </div>
         <div class="row">  
-            <div class="col"></div>    
+            <div class="col-sm"></div>    
             <div class="col-sm">
                     <form action="../controllers/LoginController.php" method="post" id="loginForm">
 
@@ -41,10 +41,12 @@
                         <div class="text-right">
                             <a href="#"><p>He olvidado la contraseña</p></a>
                         </div>
-                        <div class>
-                            <button type="submit" class="boto text-center">Enviar</button>
-                        </div>
 
+                        <div class="text-center mb-3">
+                            <button type="submit" class="boto text-center">Enviar</button>
+                            <a href="sign_up.php" class="btn btn-secondary">Registrarse</a>   
+                        </div>
+                        
                         <div>
                             <p class="warnings" id="warnings"></p>
                         </div>
