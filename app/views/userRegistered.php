@@ -4,15 +4,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título del Modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Usuario registrado con éxito</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Contenido del modal...</p>
+                    <p>Gracias por unirte a k0munitat</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <a href="../../index.php" class="btn btn-primary">Ir a index.php</a>
+                    <a href="../../index.php" class="btn btn-primary">Ir a la página principal</a>
                 </div>
             </div>
         </div>

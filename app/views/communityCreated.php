@@ -4,14 +4,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título del Modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Solicitud enviada correctamente</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Contenido del modal...</p>
+                    <p>Sólo tienes que esperar a que se apruebe la solicitud.</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="../../index.php" class="btn btn-primary">Ir a index.php</a>
+                    <a href="../../index.php" class="btn btn-primary">Ir a la página principal</a>
                 </div>
             </div>
         </div>
