@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .warnings{
+            width: 200px;
+            text-align:center;
+            margin: auto;
+            color: #B06AB3;
+            padding-top: 20px;
+        }
+    </style>
     <title>Sig In</title>
 </head>
 <body>
@@ -22,11 +31,11 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" placeholder="Write your email"  name="email" id="email" required>
+                            <input type="email" class="form-control" placeholder="Write your email"  name="email" id="email">
                         </div>
                         <div class="form-group">
                             <label for="pass">Password</label>
-                            <input type="password" class="form-control" placeholder="Write your password"  name="pass" id="pass" required >
+                            <input type="password" class="form-control" placeholder="Write your password"  name="pass" id="pass">
                         </div>
 
                         <div class="text-right">
@@ -37,7 +46,7 @@
                         </div>
 
                         <div>
-                            <p></p>
+                            <p class="warnings" id="warnings"></p>
                         </div>
                     </form>
             </div>  
@@ -46,6 +55,6 @@
     </div>
     <?php include("./footer/footer.php"); ?>
 
-    <script src="../public/assets/sign_in.js"></script>
+    <script src="../public/assets/js/sign_in.js"></script>
 </body>
 </html>
