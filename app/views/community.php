@@ -1,6 +1,6 @@
 <?php
 session_start();
-<?php include("./header/header.php");?>
+ include("./header/header.php");
 if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 ?>
 <!DOCTYPE html>
