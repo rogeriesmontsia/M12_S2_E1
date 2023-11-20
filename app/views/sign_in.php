@@ -13,7 +13,7 @@
             padding-top: 20px;
         }
     </style>
-    <title>Sig In</title>
+    <title>Sign In</title>
 </head>
 <body>
 
@@ -27,6 +27,9 @@
         <div class="row">  
             <div class="col"></div>    
             <div class="col-sm">
+            <div class="alert alert-success" role="alert">
+                    Puedes unirte a nosotros haciendo clic <a href="./sign_up.php" class="alert-link">aquí</a>
+                </div>
                     <form action="../controllers/LoginController.php" method="post" id="loginForm">
 
                         <div class="form-group">
