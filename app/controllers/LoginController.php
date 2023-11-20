@@ -20,14 +20,14 @@ class LoginController {
     //almacena información del usuario
     private function startSession() {
         session_start();
-        $_SESSION['user_id'] = $this->user->getId();
+        $_SESSION['id_user'] = $this->user->getId();
         $_SESSION['email'] = $this->user->getEmail();
         $_SESSION['role'] = $this->user->getRole();
         $_SESSION['username'] = $this->user->getUsername();
     }
 
     private function redirectUser() {
-        header("Location: ../views/landingpage/landingpage.php");
+        header("Location: ../index.php");
         exit;
     }
 

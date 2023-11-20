@@ -90,7 +90,7 @@ class User
         session_start();
 
         // Verifica si el usuario está logueado
-        if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['id_user'])) {
             // Crear una instancia de la clase Database
             $database = new Database();
 
@@ -100,9 +100,9 @@ class User
             if ($conn) {
                 try {
                     // Consulta para obtener los datos del usuario logueado
-                    $query = "SELECT * FROM users WHERE id_user = :user_id";
+                    $query = "SELECT * FROM users WHERE id_user = :id_user";
                     $stmt = $conn->prepare($query);
-                    $stmt->bindParam(':user_id', $_SESSION['user_id']);
+                    $stmt->bindParam(':id_user', $_SESSION['id_user']);
                     $stmt->execute();
 
                     // Obtener los resultados como un arreglo asociativo
@@ -153,7 +153,7 @@ class User
                 city = :city,
                 email = :email,
                 telephone = :telephone
-            WHERE id_user = :user_id";
+            WHERE id_user = :id_user";
 
             $stmt = $this->conn->prepare($query);
 
@@ -163,7 +163,7 @@ class User
             $stmt->bindParam(':city', $newCity);
             $stmt->bindParam(':email', $newEmail);
             $stmt->bindParam(':telephone', $newTelephone);
-            $stmt->bindParam(':user_id', $user['id_user']);
+            $stmt->bindParam(':id_user', $user['id_user']);
 
             // Ejecutar la actualización
             $stmt->execute();
@@ -219,9 +219,9 @@ class User
             }
 
             // Establecer el campo profile_image en null en la base de datos
-            $query = "UPDATE users SET profile_image = null WHERE id_user = :user_id";
+            $query = "UPDATE users SET profile_image = null WHERE id_user = :id_user";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':user_id', $user['id_user']);
+            $stmt->bindParam(':id_user', $user['id_user']);
 
             // Ejecutar la actualización
             $stmt->execute();
@@ -266,10 +266,10 @@ class User
         $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
 
         // Actualizar la contraseña en la base de datos
-        $query = "UPDATE users SET password = :newPassword WHERE id_user = :user_id";
+        $query = "UPDATE users SET password = :newPassword WHERE id_user = :id_user";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':newPassword', $hashedPassword);
-        $stmt->bindParam(':user_id', $user['id_user']);
+        $stmt->bindParam(':id_user', $user['id_user']);
 
         // Ejecutar la actualización
         $stmt->execute();

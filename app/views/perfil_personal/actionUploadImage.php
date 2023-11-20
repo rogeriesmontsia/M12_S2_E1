@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificar si se subió el archivo correctamente
     if (move_uploaded_file($_FILES['newImage']['tmp_name'], $uploadFile)) {
         // Actualizar la ruta de la imagen en la base de datos
-        $updateImageResult = $userObj->changeImage($_SESSION['user_id'], $newImageName);
+        $updateImageResult = $userObj->changeImage($_SESSION['id_user'], $newImageName);
 
         if ($updateImageResult) {
             // Redireccionar a la página de perfil después de la actualización exitosa
