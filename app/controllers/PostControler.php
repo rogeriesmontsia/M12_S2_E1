@@ -73,7 +73,7 @@ class PostController {
     // $nimatge el nom de la imatge que es solicita
     public function mostrarImagen($postId) {
         $rutaImagen = $this->postModel->obtenerNomImagens($postId);
-        return (RUTA.$rutaImagen["nom"]);
+        return (RUTA.$rutaImagen[0]["nom"]);
     }
 }
 

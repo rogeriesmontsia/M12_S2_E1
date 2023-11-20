@@ -1,3 +1,10 @@
+<?php 
+    require_once './header/header.php';
+    require_once "../controllers/PostControler.php";
+    $vistaP = new PostController();
+    $idPost = $_GET["postId"]
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,25 +18,19 @@
     <link rel="stylesheet" href="./header/css/style.css">
 </head>
 <body>
-    <?php 
-        require_once './header/header.php';
-        require_once "../controllers/PostControler.php";
-        require_once "../controllers/ImaPostControl.php";
-        $vistaP = new PostController();
-        $imagP = new ImaPostControl();
-    ?>
+   
     <section class = "container flex justify-content-center my-4" >
         <!-- Preview image figure-->
         <figure class="mb-4">
             <?php
-            echo '<img class="img-fluid rounded" src="'. $imagP->mostrarImagen(19,0). ' " alt="..." />';
+            echo '<img class="img-fluid rounded" src="'. $vistaP->mostrarImagen($idPost). ' " alt="..." />';
             ?>
         </figure>
                 <!-- Post content-->
                 <section class="mb-5">
                     <?php 
-                        echo '<h1>'.$vistaP->mostrarTitol(19).'</h1>';
-                        echo '<h3>'.$vistaP->mostrarDescripcio(19).'</h3>';
+                        echo '<h1>'.$vistaP->mostrarTitol($idPost).'</h1>';
+                        echo '<h3>'.$vistaP->mostrarDescripcio($idPost).'</h3>';
                     ?>
                 </section>
             </article>

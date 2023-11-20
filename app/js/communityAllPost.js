@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productsContainer = document.getElementById('products-container');
     const paginationContainer = document.getElementById('pagination-container');
-    const itemsPerPage = 1;
+    const itemsPerPage = 6;
 
     fetch('http://localhost:8000/controllers/jsonPostImage.php')
         .then(response => response.json())
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="card-text">
                         ${item.description}
                     </p>
-                    <a href="postCommunity.php?postId=${item.id_post}" class="boto">Read</a>
+                    <a href="post.php?postId=${item.id_post}" class="boto">Read</a>
                 </div>`;
 
             // Agregar la columna al contenedor de la fila
