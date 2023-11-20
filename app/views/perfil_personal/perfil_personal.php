@@ -4,11 +4,11 @@ require_once '../../models/User.php';
 $userObj = new User();
 $user = $userObj->view_user_info();
 
-if (!$user) {
-    // Si el usuario no está logueado, redirige al formulario de login
-    header('Location: ../sign_in.php');
-    exit;
-}
+// if (!$user) {
+//     // Si el usuario no está logueado, redirige al formulario de login
+//     header('Location: ../sign_in.php');
+//     exit;
+// }
 ?>
 
 <!DOCTYPE html>
