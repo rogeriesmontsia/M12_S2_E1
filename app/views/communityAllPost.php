@@ -2,6 +2,7 @@
         require_once './header/header.php';
         require_once "../controllers/PostControler.php";
         $vistaP = new PostController();
+        $commu = $_GET["id"];
 ?>
 
 <!DOCTYPE html>

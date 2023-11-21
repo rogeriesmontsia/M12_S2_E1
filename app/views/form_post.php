@@ -5,6 +5,8 @@
     if (isset($_GET['creat'])){
         echo "S'ha creat correctament el post";
     }
+    $commu = $_GET["id"];
+
 ?>
 <head>
     <title>Formulario Post/Adv</title>
@@ -45,8 +47,8 @@
             </div>
           
             <div>
-                <input value = "1" name = "id_user" type = "hidden">
-                <input value = "15" name = "id_community" type = "hidden">
+                <input value = "<?$_SESSION['username']?>" name = "id_user" type = "hidden">
+                <input value = "<? $commu ?>" name = "id_community" type = "hidden">
             </div>
             <div>
                 <button class="boto" id ="submit">Enviar</button>
