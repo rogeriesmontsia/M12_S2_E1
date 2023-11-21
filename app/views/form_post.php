@@ -9,28 +9,33 @@
 <head>
     <title>Formulario Post/Adv</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../js/validacions_form_post.js"></script>
+    <link href="../css/form_post.css" rel = "stylesheet">
 </head>
 <body>
     <div class = "container">
         <form class="p-5" action = "#" method="POST" enctype="multipart/form-data" id = "form_post">
             <div class="mb-4">
+                <span role="alert" id="titleError" aria-hidden="true">
+                    Por favor ingresa el título.
+                </span>
                 <label for="title">Titol</label>
-                <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el titol" oninput="cleanAndValidate(this)">
+                <input type="text" class="form-control" id="title" name = "title" placeholder="Escriu el titol" required maxlength="25">
             </div>
 
             <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <textarea class="form-control" id="descripcion" name = "description" rows="3" placeholder="Escribe una descripción" oninput="cleanAndValidate(this)"></textarea>
+                <span role="alert" id="descripError" aria-hidden="true">
+                    Por favor ingresa la descripción.
+                </span>
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" name = "description" rows="3" placeholder="Escribe una descripción" required maxlength="500"></textarea>
             </div>
 
             <div>
-                <label>Seleccione el tipus de publicació que vol publicar:</label><br>
-                <input type="radio" id="category1" name="category" value="post" onclick="cleanAndValidateRadio()">
-                <label for="category">Post</label><br>
-                <input type="radio" id="category2" name="category" value="adv" onclick="cleanAndValidateRadio()">
-                <label for="category">Advertisements</label><br>
+                <label id ="radioLabel">Seleccione el tipus de publicació que vol publicar:</label><br>
+                <input type="radio" id="category1" name="category" value="post" required>
+                <label for="category1">Post</label><br>
+                <input type="radio" id="category2" name="category" value="adv">
+                <label for="category2">Advertisements</label><br>
             </div>
 
             <div >
@@ -43,7 +48,7 @@
                 <input value = "15" name = "id_community" type = "hidden">
             </div>
             <div>
-                <button class="boto" onclick="validateForm()">Enviar</button>
+                <button class="boto" id ="submit">Enviar</button>
             </div>
         </form>
 

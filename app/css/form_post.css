@@ -1,0 +1,15 @@
+
+#titleError, #descripError {
+    display: none;
+    font-size: 0.8em;
+  }
+  
+  #titleError.visible, #descripError.visible {
+    display: block;
+  }
+  
+  input.invalid, textarea.invalid {
+    border-color: red;
+  }
+  
+  
