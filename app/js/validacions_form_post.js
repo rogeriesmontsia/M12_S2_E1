@@ -1,11 +1,11 @@
 const submit = document.getElementById("submit");
 
 submit.addEventListener("click", validate);
+const titleField = document.getElementById("title");
+const descripField = document.getElementById("description");
 
 function validate(e) {
   e.preventDefault();
-
-  const titleField = document.getElementById("title");
   let valid = true;
 
   if (!titleField.value) {
@@ -14,8 +14,8 @@ function validate(e) {
     titleField.classList.add("invalid");
     titleError.setAttribute("aria-hidden", false);
     titleError.setAttribute("aria-invalid", true);
+    valid = false;
   }
-  const descripField = document.getElementById("description");
 
   if (!descripField.value) {
     const descripError = document.getElementById("descripError");
@@ -23,6 +23,7 @@ function validate(e) {
     descripField.classList.add("invalid");
     descripError.setAttribute("aria-hidden", false);
     descripError.setAttribute("aria-invalid", true);
+    valid = false;
   }
 
   const categoryError = document.getElementById("categoryError");
@@ -44,3 +45,22 @@ function validate(e) {
 
   return valid;
 }
+
+//quitar error cuando empieza a escribir
+titleField.addEventListener("input", function() {
+    const titleError = document.getElementById("titleError");
+    titleError.classList.remove("visible");
+    titleField.classList.remove("invalid");
+    titleError.setAttribute("aria-hidden", true);
+    titleError.setAttribute("aria-invalid", false);
+    
+});
+
+//quitar error cuando empieza a escribir
+descripField.addEventListener("input", function() {
+  const descripError = document.getElementById("titleError");
+  descripError.classList.remove("visible");
+  descripField.classList.remove("invalid");
+  descripError.setAttribute("aria-hidden", true);
+  descripError.setAttribute("aria-invalid", false); 
+});
