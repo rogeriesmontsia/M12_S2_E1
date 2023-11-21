@@ -80,9 +80,17 @@ class PostController {
 $controller = new PostController ();
 //domes filtrarem els que es pot introduir texte
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = htmlspecialchars($_POST['title']); 
+    $title = trim($_POST['title']); //fora espais
+    if (empty($title)) {
+        exit(("No se puede insertar un titulo vacio."));
+    }
+    $title = strip_tags($title); //elimina etiquetas html y php
     $category = $_POST['category'];
-    $descript =htmlspecialchars($_POST['description']);
+    $descript =trim($_POST['description']);
+    if (empty($descript)) {
+        exit(("No se puede insertar una descripcion vacio."));
+    }
+    $descript = strip_tags($descript); //elimina etiquetas html y php
     $user = $_POST['id_user'];
     $commu = $_POST['id_community'];
     $files = $_FILES['postImage']['name'];
