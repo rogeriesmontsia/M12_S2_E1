@@ -1,6 +1,7 @@
 <?php
 include './header/header.php';
 require_once '../controllers/CommunityController.php';
+require_once '../controllers/CommunitiesUsersController.php';
 
 // Crear una instancia del controlador
 $communityController = new CommunityController();
@@ -40,11 +41,19 @@ if (!$community) {
             <p><?= $community['description'] ?></p>
             <p>Comunidad Autónoma: <?= $community['region'] ?></p>
             <a href="./communityAllAdvertisement.php?id=<?= $communityId ?>">
-            <button type="submit" class="btn btn-primary" name="showAdvertisements" value="' . $community['id_community'] . '">Ir a anuncios</button>
+                <button type="submit" class="btn btn-primary" name="showAdvertisements" value="' . $community['id_community'] . '">Ir a anuncios</button>
             </a>
             <a href="./communityAllPost.php?id=<?= $communityId ?>">
-            <button type="submit" class="btn btn-primary" name="showPosts" value="' . $community['id_community'] . '">Ir a posts</button>
+                <button type="submit" class="btn btn-primary" name="showPosts" value="' . $community['id_community'] . '">Ir a posts</button>
             </a>
+            <?php
+            $isMember = $communitiesUsersController->isMember($community['id_community'], $_SESSION['id_user']);
+
+            if ($isMember) {
+                echo '<a href="./form_post.php">
+                <button type="submit" class="btn btn-success" name="showPosts" value="' . $community['id_community'] . '">Publicar un anuncio/post</button></a>';
+            } else {
+            } ?>
         </div>
     </body>
 
