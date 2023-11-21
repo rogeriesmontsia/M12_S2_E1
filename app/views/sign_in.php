@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <script src="../public/assets/js/sign_in.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -64,7 +65,6 @@
     </div>
     <?php include("./footer/footer.php"); ?>
 
-    <script src="../public/assets/js/sign_in.js"></script>
 </body>
 
 </html>
