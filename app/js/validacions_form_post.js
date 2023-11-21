@@ -27,23 +27,21 @@ function validate(e) {
   }
 
   const categoryError = document.getElementById("categoryError");
-    const categoryInputs = document.getElementsByName("category");
-    let categoriaValida = false;
+  const categoryInputs = document.getElementsByName("category");
+  let categoriaValida = false;
+  for (const categoryInput of categoryInputs) {
+      if (categoryInput.checked) {
+          categoriaValida = true;
+          break;
+      }
+  }
+  if (!categoriaValida) {
+      categoryError.classList.add("visible");
+  } else {
+      categoryError.classList.remove("visible");
+  }
 
-    for (const categoryInput of categoryInputs) {
-        if (categoryInput.checked) {
-            categoriaValida = true;
-            break;
-        }
-    }
-
-    if (!categoriaValida) {
-        categoryError.classList.add("visible");
-    } else {
-        categoryError.classList.remove("visible");
-    }
-
-  return valid;
+return valid;
 }
 
 //quitar error cuando empieza a escribir
@@ -58,9 +56,18 @@ titleField.addEventListener("input", function() {
 
 //quitar error cuando empieza a escribir
 descripField.addEventListener("input", function() {
-  const descripError = document.getElementById("titleError");
+  const descripError = document.getElementById("descripError");
   descripError.classList.remove("visible");
   descripField.classList.remove("invalid");
   descripError.setAttribute("aria-hidden", true);
   descripError.setAttribute("aria-invalid", false); 
 });
+
+var radios = document.getElementsByName("category");
+
+// Agrega un controlador de eventos a cada radio
+for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener("click", function() {
+      categoryError.classList.remove("visible");
+    });
+}
