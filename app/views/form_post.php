@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class = "container">
-        <form class="p-5" action = "#" method="POST" enctype="multipart/form-data" id = "form_post">
+        <form class="p-5" action = "../controllers/" method="POST" enctype="multipart/form-data" id = "form_post">
             <div class="mb-4">
                 <span role="alert" id="titleError" aria-hidden="true">
                     Por favor ingresa el título.

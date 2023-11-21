@@ -78,11 +78,11 @@ class PostController {
 }
 
 $controller = new PostController ();
-
+//domes filtrarem els que es pot introduir texte
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
+    $title = htmlspecialchars($_POST['title']); 
     $category = $_POST['category'];
-    $descript = $_POST['description'];
+    $descript =htmlspecialchars($_POST['description']);
     $user = $_POST['id_user'];
     $commu = $_POST['id_community'];
     $files = $_FILES['postImage']['name'];
@@ -90,11 +90,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verificar si se ha enviado un archivo
 if ($_FILES['postImage']['error'] == UPLOAD_ERR_OK) {
     // Verificar el tipo MIME del archivo
-    $allowedTypes = ['image/jpeg', 'image/png'];
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']; //permitim sols aquestes extensions
     if (in_array($_FILES['postImage']['type'], $allowedTypes)) {
         // Obtener información sobre el archivo
         $controller->guardarPost($user, $commu, $title, $descript, $category);
-        $idPost = $controller->ultim();
+        $idPost = $controller->ultim(); //coneixer l'id del ultim insert
         $nombre = $idPost . "ima." . pathinfo($_FILES['postImage']['name'], PATHINFO_EXTENSION);
         $ruta = RUTA . $nombre;
 
