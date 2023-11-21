@@ -12,4 +12,12 @@
     border-color: red;
   }
   
-  
+  #categoryError {
+    display: none;
+    color: red;
+    font-size: 0.8em;
+}
+
+#categoryError.visible {
+    display: block;
+}

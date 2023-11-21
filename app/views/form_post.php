@@ -31,11 +31,12 @@
             </div>
 
             <div>
-                <label id ="radioLabel">Seleccione el tipus de publicació que vol publicar:</label><br>
+                <label id ="radioLabel">Seleccione el tipo de publicación:</label><br>
+                <label id="categoryError">Debe seleccionar una opción.</label>
                 <input type="radio" id="category1" name="category" value="post" required>
                 <label for="category1">Post</label><br>
                 <input type="radio" id="category2" name="category" value="adv">
-                <label for="category2">Advertisements</label><br>
+                <label for="category2">Anuncio</label><br>
             </div>
 
             <div >

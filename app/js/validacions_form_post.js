@@ -24,5 +24,23 @@ function validate(e) {
     descripError.setAttribute("aria-hidden", false);
     descripError.setAttribute("aria-invalid", true);
   }
+
+  const categoryError = document.getElementById("categoryError");
+    const categoryInputs = document.getElementsByName("category");
+    let categoriaValida = false;
+
+    for (const categoryInput of categoryInputs) {
+        if (categoryInput.checked) {
+            categoriaValida = true;
+            break;
+        }
+    }
+
+    if (!categoriaValida) {
+        categoryError.classList.add("visible");
+    } else {
+        categoryError.classList.remove("visible");
+    }
+
   return valid;
 }
