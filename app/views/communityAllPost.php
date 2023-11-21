@@ -17,6 +17,7 @@
     <link href="../css/postCommunity.css" rel="stylesheet">
 </head>
 <body>
+      <input type ="hidden" id = "idCommu" value ="<?php echo $commu ?>">
 
       <!--Section: Content-->
       <section>

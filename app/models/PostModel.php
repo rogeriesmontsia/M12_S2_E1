@@ -55,7 +55,7 @@ class PostModel {
     }
 
     public function getPostImagens() {
-        $sql = "SELECT posts.id_post, posts.title, posts.description, imagePost.nom
+        $sql = "SELECT posts.id_post, posts.id_community, posts.title, posts.description, imagePost.nom
                 FROM posts 
                 INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.portada = 1 and posts.category = 'post'";  
         $stmt = $this->conn->prepare($sql);
@@ -70,7 +70,7 @@ class PostModel {
     }
 
     public function getAdvImagens() {
-        $sql = "SELECT posts.id_post, posts.title, posts.description, imagePost.nom 
+        $sql = "SELECT posts.id_post, posts.id_community, posts.title, posts.description, imagePost.nom
                 FROM posts 
                 INNER JOIN imagePost ON imagePost.id_post = posts.id_post and imagePost.portada = '1' and posts.category = 'adv'";  
         $stmt = $this->conn->prepare($sql);

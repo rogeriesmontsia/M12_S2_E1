@@ -39,10 +39,10 @@ if (!$community) {
             <h1><?= $community['name'] ?></h1>
             <p><?= $community['description'] ?></p>
             <p>Comunidad Autónoma: <?= $community['region'] ?></p>
-            <a href="./communityAllAdvertisement.php?id=<?= $community['id_community'] ?>">
+            <a href="./communityAllAdvertisement.php?id=<?= $communityId ?>">
             <button type="submit" class="btn btn-primary" name="showAdvertisements" value="' . $community['id_community'] . '">Ir a anuncios</button>
             </a>
-            <a href="./communityAllPost.php?id=<?= $community['id_community'] ?>">
+            <a href="./communityAllPost.php?id=<?= $communityId ?>">
             <button type="submit" class="btn btn-primary" name="showPosts" value="' . $community['id_community'] . '">Ir a posts</button>
             </a>
         </div>

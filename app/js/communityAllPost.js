@@ -27,34 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
         row.classList.add('row');
         
         currentPageItems.forEach(item => {
-            // Crear una columna para cada producto
-            const col = document.createElement('div');
-            col.classList.add('col-lg-4'); 
-            col.classList.add('col-md-6'); 
-            col.classList.add('col-sm-6'); 
-            col.classList.add('d-flex'); 
+            //filtro por communidad
+            if (item.id_community == document.getElementById("idCommu").value ){
 
+                // Crear una columna para cada producto
+                const col = document.createElement('div');
+                col.classList.add('col-lg-4'); 
+                col.classList.add('col-md-6'); 
+                col.classList.add('col-sm-6'); 
+                col.classList.add('d-flex'); 
 
-            // Crear el elemento del producto
-            const productElement = document.createElement('div');
-            productElement.innerHTML += `
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                    <img src="../imatges/${item.nom}" class="card img" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">${item.title}</h5>
-                    <p class="card-text">
-                        ${item.description}
-                    </p>
-                    <a href="post.php?postId=${item.id_post}" class="boto">Read</a>
-                </div>`;
+                // Crear el elemento del producto
+                const productElement = document.createElement('div');
+                productElement.innerHTML += `
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="../imatges/${item.nom}" class="card img" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">
+                            ${item.description}
+                        </p>
+                        <a href="post.php?postId=${item.id_post}" class="boto">Read</a>
+                    </div>`;
 
-            // Agregar la columna al contenedor de la fila
-            col.appendChild(productElement);
-            row.appendChild(col);
+                // Agregar la columna al contenedor de la fila
+                col.appendChild(productElement);
+                row.appendChild(col);
+            }     
+                
          });
     // Agregar la fila al contenedor principal
     productsContainer.appendChild(row);
