@@ -50,8 +50,8 @@ if (!$community) {
             $isMember = $communitiesUsersController->isMember($community['id_community'], $_SESSION['id_user']);
 
             if ($isMember) {
-                echo '<a href="./form_post.php">
-                <button type="submit" class="btn btn-success" name="showPosts" value="' . $community['id_community'] . '">Publicar un anuncio/post</button></a>';
+                echo '<a href="./form_post.php?id='.$community["id_community"].'">';
+                echo '<button type="submit" class="btn btn-success" name="showPosts" value="' . $community['id_community'] . '">Publicar un anuncio/post</button></a>';
             } else {
             } ?>
         </div>
