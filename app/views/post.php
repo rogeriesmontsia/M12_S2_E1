@@ -23,7 +23,7 @@
         <!-- Preview image figure-->
         <figure class="mb-4">
             <?php
-            echo '<img class="img-fluid rounded" src="'. $vistaP->mostrarImagen($idPost). ' " alt="..." />';
+            echo '<img class="img-fluid w-50" src="'. $vistaP->mostrarImagen($idPost). ' " alt="..." />';
             ?>
         </figure>
                 <!-- Post content-->
