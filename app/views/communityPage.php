@@ -36,7 +36,7 @@ if (!$community) {
     </head>
 
     <body>
-        <div class="container">
+        <div class="container my-5">
             <h1><?= $community['name'] ?></h1>
             <p><?= $community['description'] ?></p>
             <p>Comunidad Autónoma: <?= $community['region'] ?></p>
