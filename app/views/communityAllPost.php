@@ -18,9 +18,9 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 </head>
 <body>
       <input type ="hidden" id = "idCommu" value ="<?php echo $commu ?>">
-      <h1>Bienvenidos a los Post de <?php echo $community->getNomComunitat($commu)?></h1>
+      <h1 class ="col text-center">Bienvenidos a los Post de <?php echo $community->getNomComunitat($commu)?></h1>
 
-      <section>
+      <section class='container-xl'>
         <section id="products-container" class = "row my-5 mx-2" ></section>
         <div id="pagination-container"></div>      
       </section>
