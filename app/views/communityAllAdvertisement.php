@@ -3,11 +3,10 @@
         require_once "../controllers/PostControler.php";
         $vistaP = new PostController();
         $commu = $_GET["id"]; //per al id de la comunitat
+        
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,14 +28,24 @@
 
         <div id="pagination-container"></div>      
       </section>
-
-  <!--Main layout-->
-
-    <?php
-        include './footer/footer.php';
-    ?>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../js/communityAllAdv.js"></script>
-
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="../js/communityAllAdv.js"></script>
 </body>
-</html>
+
+<?php
+    require_once './footer/footer.php';
+} else {
+  require_once './header/header.php';
+?>
+ <body>
+            <div class="container mt-3 w-50">
+                <div class="alert alert-danger" role="alert">
+                    Para acceder <a href="./sign_up.php" class="alert-link">regístrate</a> o <a href="./sign_in.php" class="alert-link">inicia sesión</a>
+                </div>
+            </div>
+  </body>
+<?php
+  require_once './footer/footer.php';
+
+} 
+?>

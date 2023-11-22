@@ -1,11 +1,11 @@
 <?php
     session_start();
-
     include './header/header.php';
     if (isset($_GET['creat'])){
         echo "S'ha creat correctament el post";
     }
     $commu = $_GET["id"];
+if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
 
 ?>
 <head>
@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class = "container">
-        <form class="p-5" action = "../controllers/" method="POST" enctype="multipart/form-data" id = "form_post">
+        <form class="p-5" action = "../controllers/PostControler.php" method="POST" enctype="multipart/form-data" id = "form_post">
             <div class="mb-4">
                 <span role="alert" id="titleError" aria-hidden="true">
                     Por favor ingresa el título.
@@ -60,9 +60,24 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src = "../js/validacions_form_post.js"> </script>
+<!--         <script src = "../js/validacions_form_post.js"> </script>
+ -->
 </body>
 
 <?php
-    include './footer/footer.php';
+    require_once './footer/footer.php';
+} else {
+    require_once './header/header.php';
+?>
+  <body>
+            <div class="container mt-3 w-50">
+                <div class="alert alert-danger" role="alert">
+                    Para acceder <a href="./sign_up.php" class="alert-link">regístrate</a> o <a href="./sign_in.php" class="alert-link">inicia sesión</a>
+                </div>
+            </div>
+  </body>
+ 
+<?php
+    require_once './footer/footer.php';
+}
 ?>

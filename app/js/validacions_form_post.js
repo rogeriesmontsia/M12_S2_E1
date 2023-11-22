@@ -14,7 +14,6 @@ function validate(e) {
     titleField.classList.add("invalid");
     titleError.setAttribute("aria-hidden", false);
     titleError.setAttribute("aria-invalid", true);
-    valid = false;
   }
 
   if (!descripField.value) {
@@ -23,7 +22,6 @@ function validate(e) {
     descripField.classList.add("invalid");
     descripError.setAttribute("aria-hidden", false);
     descripError.setAttribute("aria-invalid", true);
-    valid = false;
   }
 
   const categoryError = document.getElementById("categoryError");
