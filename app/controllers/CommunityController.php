@@ -87,4 +87,14 @@ class CommunityController
             echo "Error en el controlador: " . $e->getMessage();
         }
     }
+
+    public function getNomComunitat ($community_id) {
+        try {
+            $name = $this->model->getName($community_id);
+            return $name["name"];
+
+        } catch (Exception $e) {
+            echo "Error en el controlador: " . $e->getMessage();
+        }
+    }
 }
