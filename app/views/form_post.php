@@ -47,14 +47,13 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
             </div>
           
             <div>
-                <input value = "<?$_SESSION['username']?>" name = "id_user" type = "hidden">
-                <input value = "<? $commu ?>" name = "id_community" type = "hidden">
+                <input value = "<?php echo $_SESSION['id_user']?>" name = "id_user" type = "hidden">
+                <input value = "<?php echo $commu ?>" name = "id_community" type = "hidden">
             </div>
             <div>
-                <button class="boto" id ="submit">Enviar</button>
+                <button class="boto" id ="submit" type = "submit">Enviar</button>
             </div>
         </form>
-
 
     </div><br>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
