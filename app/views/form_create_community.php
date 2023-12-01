@@ -1,12 +1,10 @@
 <?php
 session_start();
 include('./header/header.php');
-
-// Asegúrate de que la sesión esté iniciada antes de intentar acceder a $_SESSION
-
+require_once '../controllers/CommunityController.php';
 
 // Accede al valor de 'id_user' en $_SESSION
-echo $_SESSION['id_user'];
+// echo $_SESSION['id_user'];
 ?>
 
 <head>
@@ -36,8 +34,12 @@ echo $_SESSION['id_user'];
                             <div class="mt-3 alert alert-danger" id="alertDescripcio" role="alert"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="comunitat_autonoma" class="form-label">Comunidad autónoma a la que pertenece la comunidad</label>
-                            <input type="text" class="form-control" id="comunitat_autonoma" name="comunitat_autonoma">
+                            <label for="comunidad_enum" class="form-label">Comunidad Autónoma</label>
+                            <select class="form-select" id="comunidad_enum" name="comunidad_enum">
+                                <?php foreach ($enumValues as $value) : ?>
+                                    <option value="<?= $value ?>"><?= $value ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <div class="mt-3 alert alert-danger" id="alertComunitat" role="alert"></div>
                         </div>
                         <div class="form-check">

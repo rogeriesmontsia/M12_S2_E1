@@ -10,7 +10,7 @@ if (!$conn) {
 } else {
     $communityController = new CommunityController();
     $communities = $communityController->index(); // Obtener las comunidades
-    
+    $enumValues = $communityController->getEnum();
     // $community = $communityController->getCommunityById($community_id);
 }
 
@@ -42,9 +42,9 @@ class CommunityController
         try {
             $nom_comunitat = htmlspecialchars($_POST['nom_comunitat']);
             $descripcio = htmlspecialchars($_POST['descripcio']);
-            $comunitat_autonoma = htmlspecialchars($_POST['comunitat_autonoma']);
+            $comunidad_enum = htmlspecialchars($_POST['comunidad_enum']);
 
-            $this->model->createCommunity($nom_comunitat, $descripcio, $comunitat_autonoma);
+            $this->model->createCommunity($nom_comunitat, $descripcio, $comunidad_enum);
 
             header("Location: ../views/communityCreated.php");
         } catch (Exception $e) {
@@ -57,11 +57,12 @@ class CommunityController
         return $this->model->getAll();
     }
 
-    public function getCommunityById($community_id) {
+    public function getCommunityById($community_id)
+    {
         // Aquí deberías usar el modelo para obtener la información de la comunidad
         $communityModel = new Community(); // Asegúrate de ajustar esto según tu implementación
         $community = $communityModel->getCommunityById($community_id);
-    
+
         return $community;
     }
 
@@ -88,11 +89,21 @@ class CommunityController
         }
     }
 
-    public function getNomComunitat ($community_id) {
+    public function getNomComunitat($community_id)
+    {
         try {
             $name = $this->model->getName($community_id);
             return $name["name"];
+        } catch (Exception $e) {
+            echo "Error en el controlador: " . $e->getMessage();
+        }
+    }
 
+    public function getEnum()
+    {
+        try {
+            $values = $this->model->getEnumValues();
+            return $values;
         } catch (Exception $e) {
             echo "Error en el controlador: " . $e->getMessage();
         }
