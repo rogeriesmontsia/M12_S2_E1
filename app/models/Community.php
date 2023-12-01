@@ -111,41 +111,17 @@ class Community
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function getEnumValues()
+
+    public function getCA()
     {
         try {
-            // Nombre de la tabla que almacena los valores del enum
-            $tablaEnum = $this->table_name;
-
-            // Nombre de la columna que almacena los valores del enum
-            $columnaEnum = 'ENUM';
-
-            // Consulta para obtener los valores del enum
-            $query = "SHOW COLUMNS FROM $tablaEnum LIKE '$columnaEnum'";
+            $query = "SELECT id_comunitat_autonoma, name FROM comunitats_autonomes";
             $stmt = $this->conn->prepare($query);
             $this->conn->exec("set names utf8");
             $stmt->execute();
 
-            // Verifica si la consulta fue exitosa
-            if ($stmt) {
-                $fila = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Obtiene los valores del enum de la definición de columna
-                $enumDefinition = $fila['Type'];
-                preg_match('/enum\((.*?)\)/', $enumDefinition, $matches);
-                $enumValues = explode(',', $matches[1]);
-
-                // Elimina comillas simples de los valores
-                $enumValues = array_map(function ($value) {
-                    return trim($value, "'");
-                }, $enumValues);
-
-                return $enumValues;
-                echo ("hola" . $enumValues);
-            } else {
-                // Manejo de errores (ajusta según tus necesidades)
-                die("Error al obtener valores del enum: " . $this->conn->errorInfo()[2]);
-            }
+            // Obtener resultados como array asociativo
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             // Manejo de excepciones de PDO (ajusta según tus necesidades)
             die("Error de PDO: " . $e->getMessage());

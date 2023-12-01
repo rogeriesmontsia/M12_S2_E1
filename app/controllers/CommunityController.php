@@ -102,8 +102,8 @@ class CommunityController
     public function getEnum()
     {
         try {
-            $values = $this->model->getEnumValues();
-            return $values;
+            $comunidadesAutonomas = $this->model->getCA();
+            return $comunidadesAutonomas;
         } catch (Exception $e) {
             echo "Error en el controlador: " . $e->getMessage();
         }

@@ -36,6 +36,15 @@ require_once '../controllers/CommunityController.php';
                         <div class="mb-3">
                             <label for="comunidad_enum" class="form-label">Comunidad Autónoma</label>
                             <select class="form-select" id="comunidad_enum" name="comunidad_enum">
+                                <?php foreach ($enumValues as $community) : ?>
+                                    <option value="<?= $community['id_comunitat_autonoma'] ?>"><?= $community['name'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="mt-3 alert alert-danger" id="alertComunitat" role="alert"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comarca" class="form-label">Comarca</label>
+                            <select class="form-select" id="comarca" name="comarca">
                                 <?php foreach ($enumValues as $value) : ?>
                                     <option value="<?= $value ?>"><?= $value ?></option>
                                 <?php endforeach; ?>
