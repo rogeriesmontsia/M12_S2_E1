@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
                         <tr>
                             <td><a href="communityPage.php?id=<?= $community['id_community'] ?>"><?= $community['name'] ?></a></td>
                             <td><?= $community['description'] ?></td>
-                            <td><?= $community['region'] ?></td>
+                            <td><?= $community['ENUM'] ?></td>
                             <td>
                             <?php
                             if ($userRole == 'superAdmin') {
