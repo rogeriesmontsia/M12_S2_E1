@@ -15,7 +15,6 @@ if (!$conn) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $_GET['action'] == 'registerCommunity') {
-    $idComunidadAutonoma = $_POST['comunitat_autonoma'];
     $communityController->create();
 }
 
@@ -44,8 +43,9 @@ class CommunityController
             $nom_comunitat = htmlspecialchars($_POST['nom_comunitat']);
             $descripcio = htmlspecialchars($_POST['descripcio']);
             $idComunidadAutonoma = $_POST['comunitat_autonoma'];
+            $id_comarca = $_POST['id_comarca'];
 
-            $this->model->createCommunity($nom_comunitat, $descripcio, $idComunidadAutonoma);
+            $this->model->createCommunity($nom_comunitat, $descripcio, $idComunidadAutonoma, $id_comarca);
 
             header("Location: ../views/communityCreated.php");
         } catch (Exception $e) {

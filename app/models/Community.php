@@ -13,7 +13,7 @@ class Community
         $this->conn = $database->connect();
     }
 
-    public function createCommunity($nom_comunitat, $descripcio, $idComunidadAutonoma)
+    public function createCommunity($nom_comunitat, $descripcio, $idComunidadAutonoma, $id_comarca)
     {
         try {
             $id_admin = $_SESSION['id_user'];
@@ -21,13 +21,15 @@ class Community
                         id_admin,
                         name, 
                         description, 
-                        id_comunitat_autonoma
+                        id_comunitat_autonoma,
+                        id_comarca
                         ) 
                       VALUES (
                         :id_admin,
                         :name, 
-                        :description, 
-                        :id_comunitat_autonoma
+                        :description,
+                        :id_comunitat_autonoma,
+                        :id_comarca
                         )";
 
             $stmt = $this->conn->prepare($query);
@@ -36,6 +38,7 @@ class Community
             $stmt->bindParam(':name', $nom_comunitat);
             $stmt->bindParam(':description', $descripcio);
             $stmt->bindParam(':id_comunitat_autonoma', $idComunidadAutonoma);
+            $stmt->bindParam(':id_comarca', $id_comarca);
 
             $stmt->execute();
         } catch (Exception $e) {
