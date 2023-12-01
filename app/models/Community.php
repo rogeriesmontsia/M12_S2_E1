@@ -13,7 +13,7 @@ class Community
         $this->conn = $database->connect();
     }
 
-    public function createCommunity($nom_comunitat, $descripcio, $comunidad_enum)
+    public function createCommunity($nom_comunitat, $descripcio, $idComunidadAutonoma)
     {
         try {
             $id_admin = $_SESSION['id_user'];
@@ -21,13 +21,13 @@ class Community
                         id_admin,
                         name, 
                         description, 
-                        ENUM
+                        id_comunitat_autonoma
                         ) 
                       VALUES (
                         :id_admin,
                         :name, 
                         :description, 
-                        :region
+                        :id_comunitat_autonoma
                         )";
 
             $stmt = $this->conn->prepare($query);
@@ -35,7 +35,7 @@ class Community
             $stmt->bindParam(':id_admin', $id_admin);
             $stmt->bindParam(':name', $nom_comunitat);
             $stmt->bindParam(':description', $descripcio);
-            $stmt->bindParam(':region', $comunidad_enum);
+            $stmt->bindParam(':id_comunitat_autonoma', $idComunidadAutonoma);
 
             $stmt->execute();
         } catch (Exception $e) {
@@ -118,6 +118,22 @@ class Community
             $query = "SELECT id_comunitat_autonoma, name FROM comunitats_autonomes";
             $stmt = $this->conn->prepare($query);
             $this->conn->exec("set names utf8");
+            $stmt->execute();
+
+            // Obtener resultados como array asociativo
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Manejo de excepciones de PDO (ajusta según tus necesidades)
+            die("Error de PDO: " . $e->getMessage());
+        }
+    }
+
+    public function getComarcasByCA($idComunitatAutonoma)
+    {
+        try {
+            $query = "SELECT id_comarca, name FROM comarques WHERE id_comunitat_autonoma = :idComunitatAutonoma";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':idComunitatAutonoma', $idComunitatAutonoma, PDO::PARAM_INT);
             $stmt->execute();
 
             // Obtener resultados como array asociativo
